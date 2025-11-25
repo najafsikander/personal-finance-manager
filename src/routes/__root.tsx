@@ -39,7 +39,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Header />
-        <div className="w-full h-[93vh] md:min-h-screen lg:min-h-screen bg-slate-900 p-4 md:p-4 lg:p-4">
+        <div className="w-full h-[93vh] md:min-h-screen lg:min-h-screen bg-slate-900 p-4 md:p-4 lg:p-4 overflow-auto">
           {children}
         </div>
         <TanStackDevtools
