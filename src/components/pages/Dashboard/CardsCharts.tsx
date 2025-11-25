@@ -1,0 +1,58 @@
+import { Wifi } from "lucide-react";
+import { Image } from "@unpic/react";
+
+const CardsCharts = () => {
+  const cardVendor: string = "VISA";
+  return (
+    <>
+      <section className="w-full mt-5 flex gap-5">
+        <div className="w-full lg:basis-1/2 xl:basis-1/2 bg-white p-4 rounded-lg border border-white/20">
+          <h3 className="font-semibold text-xl mb-5">My Cards</h3>
+          {/* Credit Card */}
+          <div className="rounded-xl w-1/2 py-5 pl-4 pr-2 bg-purple-500">
+            {/* Card's Wifi Icon */}
+            <div className="w-full flex justify-end">
+              <Wifi size={25} color="white" className="rotate-90" />
+            </div>
+            <div className="w-full flex justify-start">
+              <Image
+                src="/assets/images/emv-chip-white.png"
+                width={50}
+                height={50}
+                alt="emv-chip-icon"
+                layout="constrained"
+                className="mt-10"
+              />
+            </div>
+            <h3 className="text-white ml-2 mt-2 font-bold">DEBIT CARD</h3>
+            <div className="flex justify-between">
+              <div className="basis-2/3 flex justify-start items-center">
+                <span className="text-white text-md font-medium ml-2 mt-4 mr-2">
+                  **1234
+                </span>
+                <span className="text-white text-xs font-medium mt-4">
+                  12/24
+                </span>
+              </div>
+              <div className="basis-1/3 flex items-center justify-end">
+                <Image
+                  src={
+                    cardVendor === "VISA"
+                      ? "/assets/images/visa-logo.png"
+                      : "/assets/images/mc-logo.png"
+                  }
+                  width={80}
+                  height={40}
+                  alt={cardVendor}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default CardsCharts;

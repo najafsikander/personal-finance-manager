@@ -1,3 +1,4 @@
+import CardsCharts from "@/components/pages/Dashboard/CardsCharts";
 import SummaryCards from "@/components/pages/Dashboard/SummaryCards";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -11,6 +12,7 @@ function RouteComponent() {
       <h1 className="text-4xl font-medium text-white text-center">Dashboard</h1>
       {/* Summary Cards Grid */}
       <SummaryCards/>
+      <CardsCharts/>
     </>
   );
 }
