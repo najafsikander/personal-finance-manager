@@ -1,6 +1,8 @@
 import { Wifi } from "lucide-react";
 import { Image } from "@unpic/react";
 
+//TODO: CREATE A COMPONENT WHICH SHOWS LIST OF CREDIT CARDS
+//TODO: EXCRACT CREDIT CARD CODE INTO ITS OWN COMPONENT
 const CardsCharts = () => {
   const cardVendor: string = "VISA";
   return (
