@@ -1,6 +1,5 @@
 //TODO: CREATE A COMPONENT WHICH SHOWS LIST OF CREDIT CARDS
 
-import PaymentCard from "@/components/cards/PaymentCard";
 import CardsStack from "./CardsStack";
 
 //TODO: EXCRACT CREDIT CARD CODE INTO ITS OWN COMPONENT

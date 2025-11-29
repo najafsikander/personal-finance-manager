@@ -23,7 +23,7 @@ const PaymentCard: FC<Props> = ({
 }) => {
   return (
     <div
-      className={`absolute rounded-xl w-full pt-5 pl-4 pr-4 pb-4 ${color} transition-all duration-300 hover:translate-y-[-10px] hover:shadow-2xl cursor-pointer`}
+      className={`absolute rounded-xl w-full pt-5 pl-4 pr-4 pb-4 ${color} transition-all duration-300 hover:-translate-y-2.5 hover:shadow-2xl cursor-pointer`}
       style={{
         zIndex: zIndex,
         top: `${offsetY}px`,
