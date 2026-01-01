@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({ component: App });
 
+// TODO: REREAD ALL OF THE CODE
 // TODO: MAKE BASIC HOME PAGE
 // TODO: MAKE DASHBOARD PAGE. MUST INCLUDE: STATS CARDS, TRANSACTION TABLE, CARDS LIST, GRAPHS
 // TODO: MAKE ADD EXPENSE PAGE. MUST INCLUDE: EXPENSE FORM, CATEGORY SELECTOR, AMOUNT INPUT, DATE PICKER
@@ -19,7 +20,10 @@ function App() {
       <p className="text-white font-medium text-2xl mt-2">
         Analyze and manage your personal expenses effectively.
       </p>
-      <button className="mt-6 px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 cursor-pointer transition" onClick={() => navigate({to:'/dashboard'})}>
+      <button
+        className="mt-6 px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 cursor-pointer transition"
+        onClick={() => navigate({ to: "/dashboard" })}
+      >
         Get Started
       </button>
     </section>
