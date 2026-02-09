@@ -1,12 +1,15 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import Header from "@/components/layout/Header";
 
 import appCss from "../styles.css?url";
 import NotFound from "@/components/layout/NotFound";
 import Error from "@/components/layout/Error";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Route = createRootRoute({
   head: () => ({
@@ -32,7 +35,7 @@ export const Route = createRootRoute({
 
   shellComponent: RootDocument,
   notFoundComponent: NotFound,
-  errorComponent:Error
+  errorComponent: Error,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
