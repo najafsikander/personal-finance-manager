@@ -12,8 +12,8 @@ const CardsCharts = () => {
           <h3 className="font-semibold text-xl mb-5">My Cards</h3>
           <CardsStack />
         </div>
-        <div className="w-full bg-white p-4 rounded-lg border border-white/20">
-          <h3 className="font-semibold text-xl mb-5">Charts</h3>
+        <div className="w-full bg-white p-4 pb-6 rounded-lg border border-white/20">
+          <h3 className="font-semibold text-xl mb-5">My Cards</h3>
           <DoughnutChart />
         </div>
       </section>
