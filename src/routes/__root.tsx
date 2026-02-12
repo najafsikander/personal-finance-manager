@@ -1,5 +1,6 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { formDevtoolsPlugin } from "@tanstack/react-form-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
@@ -58,6 +59,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               name: "Tanstack Router",
               render: <TanStackRouterDevtoolsPanel />,
             },
+            formDevtoolsPlugin(),
           ]}
         />
         <Scripts />
