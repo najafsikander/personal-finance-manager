@@ -6,7 +6,7 @@ type Props = {
   placeholder?: string;
   label?: string;
   value?: string;
-  readonly?: boolean;
+  readOnly?: boolean;
   required?: boolean;
   min?: number;
   max?: number;
@@ -18,7 +18,7 @@ const NumberField: FC<Props> = ({
   placeholder,
   label,
   value,
-  readonly = false,
+  readOnly = false,
   required = false,
   min = 0,
   max = 1000000,
@@ -34,7 +34,7 @@ const NumberField: FC<Props> = ({
         value={value}
         min={min}
         max={max}
-        readOnly={readonly}
+        readOnly={readOnly}
         required={required}
       />
     </>

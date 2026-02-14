@@ -7,19 +7,19 @@ type Props = {
   label?: string;
   value?: string;
   required?: boolean;
-  readonly?: boolean;
+  readOnly?: boolean;
   min?: string;
   max?: string;
 };
 
-const TextField: FC<Props> = ({
+const DateField: FC<Props> = ({
   id,
   name,
   placeholder,
   label,
   value,
   required = false,
-  readonly = false,
+  readOnly = false,
   min = "01/01/2000",
   max = "12/31/2099",
 }) => {
@@ -33,7 +33,7 @@ const TextField: FC<Props> = ({
         placeholder={placeholder}
         value={value}
         required={required}
-        readOnly={readonly}
+        readOnly={readOnly}
         min={min}
         max={max}
       />
@@ -41,4 +41,4 @@ const TextField: FC<Props> = ({
   );
 };
 
-export default TextField;
+export default DateField;

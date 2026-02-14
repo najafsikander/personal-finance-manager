@@ -7,7 +7,7 @@ type Props = {
   label?: string;
   value?: string;
   required?: boolean;
-  readonly?: boolean;
+  readOnly?: boolean;
 };
 
 const TextField: FC<Props> = ({
@@ -17,7 +17,7 @@ const TextField: FC<Props> = ({
   label,
   value,
   required = false,
-  readonly = false,
+  readOnly = false,
 }) => {
   return (
     <>
@@ -29,7 +29,7 @@ const TextField: FC<Props> = ({
         placeholder={placeholder}
         value={value}
         required={required}
-        readOnly={readonly}
+        readOnly={readOnly}
       />
     </>
   );

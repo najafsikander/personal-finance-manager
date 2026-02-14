@@ -5,7 +5,7 @@ type Props = {
   name: string;
   label?: string;
   value?: string;
-  readonly?: boolean;
+  readOnly?: boolean;
   required?: boolean;
   options: {
     value: string;
@@ -18,7 +18,7 @@ const SelectField: FC<Props> = ({
   name,
   label,
   value,
-  readonly = false,
+  readOnly = false,
   required = false,
   options,
 }) => {
@@ -29,7 +29,7 @@ const SelectField: FC<Props> = ({
         id={id}
         name={name}
         value={value}
-        disabled={readonly}
+        disabled={readOnly}
         required={required}
       >
         <option value="">Select an option</option>
