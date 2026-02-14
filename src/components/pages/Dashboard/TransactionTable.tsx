@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useReducer, useState } from "react";
+import { useState } from "react";
 
 const transactions: Transaction[] = [
   {
@@ -85,7 +85,6 @@ const columns = [
 
 const TransactionTable = () => {
   const [data, _setData] = useState(() => [...transactions]);
-  const rerender = useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data,
