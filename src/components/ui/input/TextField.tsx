@@ -1,37 +1,39 @@
+import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
 
 type Props = {
-  id: string;
-  name: string;
   placeholder?: string;
   label?: string;
-  value?: string;
   required?: boolean;
   readOnly?: boolean;
 };
 
 const TextField: FC<Props> = ({
-  id,
-  name,
   placeholder,
   label,
-  value,
   required = false,
   readOnly = false,
 }) => {
+  const field = useFieldContext<string>();
+
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col my-2">
+      <label htmlFor={field.name} className="text-sm text-white font-medium">
+        {label}
+      </label>
       <input
-        id={id}
-        name={name}
+        id={field.name}
+        name={field.name}
         type="text"
         placeholder={placeholder}
-        value={value}
+        value={field.state.value ?? ""}
+        onBlur={field.handleBlur}
+        onChange={(e) => field.handleChange(e.target.value)}
         required={required}
         readOnly={readOnly}
+        className="text-xl border border-white rounded-md text-white font-medium"
       />
-    </>
+    </div>
   );
 };
 
