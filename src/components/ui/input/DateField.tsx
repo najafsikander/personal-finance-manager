@@ -1,43 +1,38 @@
+import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
 
 type Props = {
-  id: string;
-  name: string;
   placeholder?: string;
   label?: string;
-  value?: string;
   required?: boolean;
   readOnly?: boolean;
-  min?: string;
-  max?: string;
 };
 
 const DateField: FC<Props> = ({
-  id,
-  name,
   placeholder,
   label,
-  value,
   required = false,
   readOnly = false,
-  min = "01/01/2000",
-  max = "12/31/2099",
 }) => {
+  const field = useFieldContext<string>();
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col my-2">
+      <label htmlFor={field.name} className="text-sm text-white font-medium">
+        {label}
+      </label>
       <input
-        id={id}
-        name={name}
+        id={field.name}
+        name={field.name}
         type="date"
         placeholder={placeholder}
-        value={value}
+        value={field.state.value ?? ""}
+        onBlur={field.handleBlur}
+        onChange={(e) => field.handleChange(e.target.value)}
         required={required}
         readOnly={readOnly}
-        min={min}
-        max={max}
+        className="text-xl border border-white rounded-md text-white font-medium"
       />
-    </>
+    </div>
   );
 };
 

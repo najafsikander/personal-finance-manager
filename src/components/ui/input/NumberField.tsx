@@ -1,43 +1,37 @@
+import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
 
 type Props = {
-  id: string;
-  name: string;
-  placeholder?: string;
   label?: string;
-  value?: string;
-  readOnly?: boolean;
+  placeholder?: string;
   required?: boolean;
-  min?: number;
-  max?: number;
 };
 
-const NumberField: FC<Props> = ({
-  id,
-  name,
-  placeholder,
-  label,
-  value,
-  readOnly = false,
-  required = false,
-  min = 0,
-  max = 1000000,
-}) => {
+const NumberField: FC<Props> = ({ label, placeholder, required }) => {
+  const field = useFieldContext<number>();
+
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col my-2">
+      {label ? (
+        <label htmlFor={field.name} className="text-sm text-white font-medium">
+          {label}
+        </label>
+      ) : null}
       <input
-        id={id}
-        name={name}
+        id={field.name}
+        name={field.name}
         type="number"
         placeholder={placeholder}
-        value={value}
-        min={min}
-        max={max}
-        readOnly={readOnly}
+        value={Number.isFinite(field.state.value) ? field.state.value : 0}
+        onBlur={field.handleBlur}
+        onChange={(e) => {
+          const raw = e.target.value;
+          field.handleChange(raw == "" ? 0 : Number(raw));
+        }}
         required={required}
+        className="text-xl border border-white rounded-md text-white font-medium"
       />
-    </>
+    </div>
   );
 };
 

@@ -1,45 +1,40 @@
-import { FC } from "react";
+import { useFieldContext } from "@/lib/forms/useAppForm";
+import { FC, ReactNode } from "react";
 
 type Props = {
-  id: string;
-  name: string;
   label?: string;
-  value?: string;
   readOnly?: boolean;
   required?: boolean;
-  options: {
-    value: string;
-    label: string;
-  }[];
+  children: ReactNode;
 };
 
 const SelectField: FC<Props> = ({
-  id,
-  name,
   label,
-  value,
   readOnly = false,
   required = false,
-  options,
+  children,
 }) => {
+  const field = useFieldContext<string>();
+
   return (
-    <>
-      <label htmlFor={id}>{label}</label>
+    <div className="flex flex-col my-2">
+      <label htmlFor={field.name} className="text-sm text-white font-medium">
+        {label}
+      </label>
       <select
-        id={id}
-        name={name}
-        value={value}
+        id={field.name}
+        name={field.name}
         disabled={readOnly}
         required={required}
+        value={field.state.value ?? ""}
+        onBlur={field.handleBlur}
+        onChange={(e) => field.handleChange(e.target.value)}
+        className="text-xl border border-white rounded-md text-white font-medium"
       >
         <option value="">Select an option</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {children}
       </select>
-    </>
+    </div>
   );
 };
 

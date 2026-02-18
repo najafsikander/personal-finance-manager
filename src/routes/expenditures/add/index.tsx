@@ -1,6 +1,7 @@
+import { expenseDefault } from "@/data/default/expense";
 import { useAppForm } from "@/lib/forms/useAppForm";
+import { expenseSchema } from "@/schemas/transaction";
 import { createFileRoute } from "@tanstack/react-router";
-import { z } from "zod";
 
 export const Route = createFileRoute("/expenditures/add/")({
   component: RouteComponent,
@@ -8,23 +9,9 @@ export const Route = createFileRoute("/expenditures/add/")({
 
 function RouteComponent() {
   const form = useAppForm({
-    defaultValues: {
-      payment_name: "",
-      amount: "0",
-      currency: "AED",
-      date: "",
-      method: "",
-      category: "",
-    },
+    defaultValues: expenseDefault,
     validators: {
-      onChange: z.object({
-        payment_name: z.string(),
-        amount: z.string(),
-        currency: z.string(),
-        date: z.string(),
-        method: z.string(),
-        category: z.string(),
-      }),
+      onChange: expenseSchema,
     },
     onSubmit: ({ value }) => {
       console.log("Value: ", form.state.values);
@@ -60,7 +47,7 @@ function RouteComponent() {
         <form.AppField
           name="amount"
           children={(field) => (
-            <field.TextField
+            <field.NumberField
               label="Amount"
               placeholder="Add Amount"
               required={true}
@@ -70,17 +57,16 @@ function RouteComponent() {
         <form.AppField
           name="currency"
           children={(field) => (
-            <field.TextField
-              label="Currency"
-              placeholder="Add Currency"
-              required={true}
-            />
+            <field.SelectField label="Currency" required={true}>
+              <option value="AED">AED</option>
+              <option value="USD">USD</option>
+            </field.SelectField>
           )}
         />
         <form.AppField
           name="date"
           children={(field) => (
-            <field.TextField
+            <field.DateField
               label="Date"
               placeholder="Add Date"
               required={true}
@@ -90,21 +76,20 @@ function RouteComponent() {
         <form.AppField
           name="method"
           children={(field) => (
-            <field.TextField
-              label="Payment Method"
-              placeholder="Add Method"
-              required={true}
-            />
+            <field.SelectField label="Payment Method" required={true}>
+              <option value="cash">Cash</option>
+              <option value="debitCard">Debit Card</option>
+              <option value="creditCard">Credit Card</option>
+            </field.SelectField>
           )}
         />
         <form.AppField
           name="category"
           children={(field) => (
-            <field.TextField
-              label="Category"
-              placeholder="Add Category"
-              required={true}
-            />
+            <field.SelectField label="Category" required={true}>
+              <option value="electricity">Electricity</option>
+              <option value="grocery">Grocery</option>
+            </field.SelectField>
           )}
         />
 
