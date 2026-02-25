@@ -1,5 +1,6 @@
 import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
+import FormError from "../message-box/FormError";
 
 type Props = {
   label?: string;
@@ -30,6 +31,10 @@ const NumberField: FC<Props> = ({ label, placeholder, required }) => {
         }}
         required={required}
         className="text-xl border border-white rounded-md text-white font-medium"
+      />
+      <FormError
+        isFieldValid={field.state.meta.isValid}
+        errors={field.state.meta.errors}
       />
     </div>
   );

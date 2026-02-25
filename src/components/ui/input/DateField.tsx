@@ -1,5 +1,6 @@
 import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
+import FormError from "../message-box/FormError";
 
 type Props = {
   placeholder?: string;
@@ -31,6 +32,10 @@ const DateField: FC<Props> = ({
         required={required}
         readOnly={readOnly}
         className="text-xl border border-white rounded-md text-white font-medium"
+      />
+      <FormError
+        isFieldValid={field.state.meta.isValid}
+        errors={field.state.meta.errors}
       />
     </div>
   );

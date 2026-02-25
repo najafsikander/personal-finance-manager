@@ -1,5 +1,6 @@
 import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC, ReactNode } from "react";
+import FormError from "../message-box/FormError";
 
 type Props = {
   label?: string;
@@ -34,6 +35,10 @@ const SelectField: FC<Props> = ({
         <option value="">Select an option</option>
         {children}
       </select>
+      <FormError
+        isFieldValid={field.state.meta.isValid}
+        errors={field.state.meta.errors}
+      />
     </div>
   );
 };
