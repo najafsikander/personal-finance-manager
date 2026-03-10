@@ -19,7 +19,10 @@ const TextField: FC<Props> = ({
 
   return (
     <div className="flex flex-col my-2">
-      <label htmlFor={field.name} className="text-sm text-white font-medium">
+      <label
+        htmlFor={field.name}
+        className="text-sm text-slate-800 font-medium"
+      >
         {label}
       </label>
       <input
@@ -32,7 +35,7 @@ const TextField: FC<Props> = ({
         onChange={(e) => field.handleChange(e.target.value)}
         required={required}
         readOnly={readOnly}
-        className="text-xl border border-white rounded-md text-white font-medium"
+        className="text-xl border border-slate-800 rounded-md text-slate-800 font-medium"
       />
       <FormError
         isFieldValid={field.state.meta.isValid}

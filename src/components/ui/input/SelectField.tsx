@@ -19,7 +19,10 @@ const SelectField: FC<Props> = ({
 
   return (
     <div className="flex flex-col my-2">
-      <label htmlFor={field.name} className="text-sm text-white font-medium">
+      <label
+        htmlFor={field.name}
+        className="text-sm text-slate-800 font-medium"
+      >
         {label}
       </label>
       <select
@@ -30,7 +33,7 @@ const SelectField: FC<Props> = ({
         value={field.state.value ?? ""}
         onBlur={field.handleBlur}
         onChange={(e) => field.handleChange(e.target.value)}
-        className="text-xl border border-white rounded-md text-white font-medium"
+        className="text-xl border border-slate-800 rounded-md text-slate-800 font-medium"
       >
         <option value="">Select an option</option>
         {children}

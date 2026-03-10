@@ -14,7 +14,10 @@ const NumberField: FC<Props> = ({ label, placeholder, required }) => {
   return (
     <div className="flex flex-col my-2">
       {label ? (
-        <label htmlFor={field.name} className="text-sm text-white font-medium">
+        <label
+          htmlFor={field.name}
+          className="text-sm text-slate-800 font-medium"
+        >
           {label}
         </label>
       ) : null}
@@ -30,7 +33,7 @@ const NumberField: FC<Props> = ({ label, placeholder, required }) => {
           field.handleChange(raw == "" ? 0 : Number(raw));
         }}
         required={required}
-        className="text-xl border border-white rounded-md text-white font-medium"
+        className="text-xl border border-slate-800 rounded-md text-slate-800 font-medium"
       />
       <FormError
         isFieldValid={field.state.meta.isValid}
