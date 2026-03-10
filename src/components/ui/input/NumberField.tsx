@@ -1,6 +1,7 @@
 import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC } from "react";
 import FormError from "../message-box/FormError";
+import FormLabel from "../labels/FormLabel";
 
 type Props = {
   label?: string;
@@ -12,14 +13,11 @@ const NumberField: FC<Props> = ({ label, placeholder, required }) => {
   const field = useFieldContext<number>();
 
   return (
-    <div className="flex flex-col my-2">
+    <div className="flex flex-col mt-2 mb-6">
       {label ? (
-        <label
-          htmlFor={field.name}
-          className="text-sm text-slate-800 font-medium"
-        >
+        <FormLabel labelName={field.name} isRequired={required}>
           {label}
-        </label>
+        </FormLabel>
       ) : null}
       <input
         id={field.name}
@@ -33,7 +31,7 @@ const NumberField: FC<Props> = ({ label, placeholder, required }) => {
           field.handleChange(raw == "" ? 0 : Number(raw));
         }}
         required={required}
-        className="text-xl border border-slate-800 rounded-md text-slate-800 font-medium"
+        className="text-xl border border-gray-200 bg-gray-50 rounded-sm text-neutral-800 font-medium px-2 py-1"
       />
       <FormError
         isFieldValid={field.state.meta.isValid}

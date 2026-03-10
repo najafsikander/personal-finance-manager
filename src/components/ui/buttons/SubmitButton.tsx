@@ -5,7 +5,7 @@ const SubmitButton = ({ children }: { children: ReactNode }) => {
     <>
       <button
         type="submit"
-        className="my-2 border border-slate-800 rounded-md p-2 cursor-pointer text-slate-800 hover:bg-slate-800 hover:text-white transition"
+        className="my-2 border-2 border-slate-800 rounded-md p-2 cursor-pointer bg-slate-800 text-white hover:text-slate-800 hover:bg-transparent transition"
       >
         {children}
       </button>

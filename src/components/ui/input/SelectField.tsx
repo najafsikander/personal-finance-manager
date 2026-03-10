@@ -1,6 +1,7 @@
 import { useFieldContext } from "@/lib/forms/useAppForm";
 import { FC, ReactNode } from "react";
 import FormError from "../message-box/FormError";
+import FormLabel from "../labels/FormLabel";
 
 type Props = {
   label?: string;
@@ -18,13 +19,10 @@ const SelectField: FC<Props> = ({
   const field = useFieldContext<string>();
 
   return (
-    <div className="flex flex-col my-2">
-      <label
-        htmlFor={field.name}
-        className="text-sm text-slate-800 font-medium"
-      >
+    <div className="flex flex-col mt-2 mb-6">
+      <FormLabel labelName={field.name} isRequired={required}>
         {label}
-      </label>
+      </FormLabel>
       <select
         id={field.name}
         name={field.name}
@@ -33,7 +31,7 @@ const SelectField: FC<Props> = ({
         value={field.state.value ?? ""}
         onBlur={field.handleBlur}
         onChange={(e) => field.handleChange(e.target.value)}
-        className="text-xl border border-slate-800 rounded-md text-slate-800 font-medium"
+        className="text-xl border border-gray-200 bg-gray-50 rounded-sm text-neutral-800 font-medium px-2 py-1"
       >
         <option value="">Select an option</option>
         {children}

@@ -11,10 +11,10 @@ function RouteComponent() {
   return (
     <>
       <section className="w-full flex justify-center">
-        <div className="w-2/3 text-center border border-stone-50">
+        <div className="w-2/3 text-center">
           {/*Upper Row*/}
           <div className="w-full flex justify-between items-center p-2 mb-1">
-            <div className="flex justify-start items-baseline gap-2">
+            <div className="flex justify-start items-baseline gap-2 pt-3">
               <FilePlus size={22} color="white" />
               <h3 className="font-medium text-xl text-white mb-2">
                 Add Expense
