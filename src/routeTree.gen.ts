@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as SplatIndexRouteImport } from './routes/$/index'
+import { Route as ExpendituresBulkUploadIndexRouteImport } from './routes/expenditures/bulk-upload/index'
 import { Route as ExpendituresAddIndexRouteImport } from './routes/expenditures/add/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
@@ -36,6 +37,12 @@ const SplatIndexRoute = SplatIndexRouteImport.update({
   path: '/$/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExpendituresBulkUploadIndexRoute =
+  ExpendituresBulkUploadIndexRouteImport.update({
+    id: '/expenditures/bulk-upload/',
+    path: '/expenditures/bulk-upload/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ExpendituresAddIndexRoute = ExpendituresAddIndexRouteImport.update({
   id: '/expenditures/add/',
   path: '/expenditures/add/',
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add': typeof ExpendituresAddIndexRoute
+  '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add': typeof ExpendituresAddIndexRoute
+  '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -112,6 +121,7 @@ export interface FileRoutesById {
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add/': typeof ExpendituresAddIndexRoute
+  '/expenditures/bulk-upload/': typeof ExpendituresBulkUploadIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add'
+    | '/expenditures/bulk-upload'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add'
+    | '/expenditures/bulk-upload'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -153,6 +165,7 @@ export interface FileRouteTypes {
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add/'
+    | '/expenditures/bulk-upload/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -167,6 +180,7 @@ export interface RootRouteChildren {
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
   ExpendituresAddIndexRoute: typeof ExpendituresAddIndexRoute
+  ExpendituresBulkUploadIndexRoute: typeof ExpendituresBulkUploadIndexRoute
   DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
   DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
   DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
@@ -194,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/expenditures/bulk-upload/': {
+      id: '/expenditures/bulk-upload/'
+      path: '/expenditures/bulk-upload'
+      fullPath: '/expenditures/bulk-upload'
+      preLoaderRoute: typeof ExpendituresBulkUploadIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/expenditures/add/': {
@@ -263,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
   ExpendituresAddIndexRoute: ExpendituresAddIndexRoute,
+  ExpendituresBulkUploadIndexRoute: ExpendituresBulkUploadIndexRoute,
   DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
   DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
   DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,

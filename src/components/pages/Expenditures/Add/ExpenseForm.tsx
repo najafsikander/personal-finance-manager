@@ -84,6 +84,16 @@ const ExpenseForm = () => {
             </field.SelectField>
           )}
         />
+        <form.AppField
+          name="note"
+          children={(field) => (
+            <field.TextField
+              label="Note"
+              placeholder="Add Note"
+              required={true}
+            />
+          )}
+        />
 
         <form.AppForm>
           <form.SubmitButton>ADD EXPENSE</form.SubmitButton>

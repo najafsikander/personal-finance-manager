@@ -6,6 +6,7 @@ const expenseSchema = z.object({
   date: z.string(),
   method: z.string(),
   category: z.string(),
+  note: z.string(),
 });
 
 export { expenseSchema };

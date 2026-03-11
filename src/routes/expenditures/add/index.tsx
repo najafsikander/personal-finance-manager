@@ -29,11 +29,29 @@ function RouteComponent() {
             <div className="w-full p-2 bg-white flex text-left">
               <div className="px-5 basis-1/3 mt-2">
                 <h1 className="font-bold text-xl">Expense Information</h1>
-                <p className="text-slate-700 mt-2">
-                  It is being a long established fact that a reader will be
-                  distracted by the readable content of a page when looking at
-                  its layout.
-                </p>
+                <div className="text-sm text-gray-600 space-y-3">
+                  <p>
+                    Record a new expense by filling out the form on the right.
+                    Provide the payment name, amount, date, payment method, and
+                    category to accurately track your transactions.
+                  </p>
+
+                  <p>
+                    Once submitted, the expense will be saved to your financial
+                    records.
+                  </p>
+
+                  <p>
+                    If you have multiple transactions, you can also{" "}
+                    <a
+                      href="/expenditures/bulk-upload"
+                      className="text-blue-600 font-medium hover:underline"
+                    >
+                      upload them using a file
+                    </a>
+                    .
+                  </p>
+                </div>
               </div>
               <div className="basis-2/3">
                 <ExpenseForm />

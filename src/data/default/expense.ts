@@ -5,6 +5,7 @@ const expenseDefault = {
   date: "",
   method: "",
   category: "",
+  note: "",
 };
 
 export { expenseDefault };
