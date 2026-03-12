@@ -5,9 +5,9 @@ import {
   SubmitButton,
   TextField,
 } from "@/components/ui";
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
+import { createFormHook } from "@tanstack/react-form";
 
-const { fieldContext, formContext, useFieldContext } = createFormHookContexts();
+import { fieldContext, formContext, useFieldContext } from "./form-context";
 
 const { useAppForm } = createFormHook({
   fieldComponents: {
