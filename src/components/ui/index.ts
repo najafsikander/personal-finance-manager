@@ -3,6 +3,20 @@ import NumberField from "./input/NumberField";
 import SelectField from "./input/SelectField";
 import TextField from "./input/TextField";
 
-import SubmitButton from "./buttons/SubmitButton";
+import FormLabel from "./labels/FormLabel";
 
-export { DateField, NumberField, SelectField, TextField, SubmitButton };
+import SubmitButton from "./buttons/SubmitButton";
+import BackButton from "./buttons/BackButton";
+
+import FormError from "./message-box/FormError";
+
+export {
+  DateField,
+  NumberField,
+  SelectField,
+  TextField,
+  FormLabel,
+  SubmitButton,
+  BackButton,
+  FormError,
+};
