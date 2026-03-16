@@ -1,4 +1,5 @@
 import PageArea from "@/components/layout/PageArea";
+import UploadSection from "@/components/pages/Expenditures/BulkUpload/UploadSection";
 import { createFileRoute } from "@tanstack/react-router";
 import { FilePlus } from "lucide-react";
 
@@ -40,11 +41,7 @@ function RouteComponent() {
         upperRowHeading="Bulk Expense Upload"
         mainAreaHeading="Bulk Upload Info"
         mainAreaDescription={mainAreaDescription}
-        mainContent={
-          <>
-            <p>Add expenses using a file</p>
-          </>
-        }
+        mainContent={<UploadSection />}
       />
     </section>
   );
