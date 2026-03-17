@@ -15,6 +15,7 @@ const transactions: Transaction[] = [
     date: "2026-02-01",
     method: "Credit Card",
     category: "Entertainment",
+    note: "Test Note",
   },
   {
     payment_name: "Carrefour Grocery",
@@ -23,6 +24,7 @@ const transactions: Transaction[] = [
     date: "2026-02-03",
     method: "Debit Card",
     category: "Groceries",
+    note: "Test Note",
   },
   {
     payment_name: "Dubai Taxi Ride",
@@ -31,6 +33,7 @@ const transactions: Transaction[] = [
     date: "2026-02-05",
     method: "Cash",
     category: "Transport",
+    note: "Test Note",
   },
   {
     payment_name: "Gym Membership",
@@ -39,6 +42,7 @@ const transactions: Transaction[] = [
     date: "2026-02-06",
     method: "Bank Transfer",
     category: "Health & Fitness",
+    note: "Test Note",
   },
   {
     payment_name: "Amazon Electronics Purchase",
@@ -47,6 +51,7 @@ const transactions: Transaction[] = [
     date: "2026-02-08",
     method: "Credit Card",
     category: "Shopping",
+    note: "Test Note",
   },
 ];
 
@@ -79,6 +84,10 @@ const columns = [
   }),
   columnHelper.accessor("category", {
     header: () => <span>Category</span>,
+    footer: (info) => info.column.id,
+  }),
+  columnHelper.accessor("note", {
+    header: () => <span>Note</span>,
     footer: (info) => info.column.id,
   }),
 ];

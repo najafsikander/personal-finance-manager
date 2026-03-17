@@ -5,4 +5,5 @@ export type Transaction = {
   date: string;
   method: string;
   category: string;
+  note: string;
 };
