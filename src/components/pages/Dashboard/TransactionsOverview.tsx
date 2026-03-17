@@ -1,5 +1,9 @@
 import TransactionTable from "./TransactionTable";
 
+// TODO: EXTRACT DATA USED IN TRANSACTION TABLE TO UPPER LEVEL
+// TODO: ADD FILTER AND A PROP TO HIDE SHOW FILTER
+// TODO: ADD PAGINATION AND SORTING AND PROPS TO HIDE SHOW THEM
+
 const TransactionsOverview = () => {
   return (
     <>
