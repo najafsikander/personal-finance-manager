@@ -1,98 +1,18 @@
 import { Transaction } from "@/types/transaction";
 import {
-  createColumnHelper,
+  ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { FC, useState } from "react";
 
-const transactions: Transaction[] = [
-  {
-    payment_name: "Netflix Subscription",
-    amount: "55 AED",
-    currency: "AED",
-    date: "2026-02-01",
-    method: "Credit Card",
-    category: "Entertainment",
-    note: "Test Note",
-  },
-  {
-    payment_name: "Carrefour Grocery",
-    amount: "230 AED",
-    currency: "AED",
-    date: "2026-02-03",
-    method: "Debit Card",
-    category: "Groceries",
-    note: "Test Note",
-  },
-  {
-    payment_name: "Dubai Taxi Ride",
-    amount: "35 AED",
-    currency: "AED",
-    date: "2026-02-05",
-    method: "Cash",
-    category: "Transport",
-    note: "Test Note",
-  },
-  {
-    payment_name: "Gym Membership",
-    amount: "150 AED",
-    currency: "AED",
-    date: "2026-02-06",
-    method: "Bank Transfer",
-    category: "Health & Fitness",
-    note: "Test Note",
-  },
-  {
-    payment_name: "Amazon Electronics Purchase",
-    amount: "899 AED",
-    currency: "AED",
-    date: "2026-02-08",
-    method: "Credit Card",
-    category: "Shopping",
-    note: "Test Note",
-  },
-];
+type Props = {
+  transactions: Transaction[];
+  columns: ColumnDef<any, any>[];
+};
 
-const columnHelper = createColumnHelper<Transaction>();
-
-const columns = [
-  columnHelper.accessor("payment_name", {
-    header: () => <span>Payment Name</span>,
-    cell: (info) => info.getValue(),
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor((row) => row.amount, {
-    id: "amount",
-    cell: (info) => <i>{info.getValue()}</i>,
-    header: () => <span>Amount</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("currency", {
-    header: () => "Currency",
-    cell: (info) => info.renderValue(),
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("date", {
-    header: () => <span>Date</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("method", {
-    header: () => <span>Method</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("category", {
-    header: () => <span>Category</span>,
-    footer: (info) => info.column.id,
-  }),
-  columnHelper.accessor("note", {
-    header: () => <span>Note</span>,
-    footer: (info) => info.column.id,
-  }),
-];
-
-const TransactionTable = () => {
+const TransactionTable: FC<Props> = ({ transactions, columns }) => {
   const [data, _setData] = useState(() => [...transactions]);
 
   const table = useReactTable({
