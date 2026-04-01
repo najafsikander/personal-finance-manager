@@ -96,7 +96,7 @@ const ExpenseForm = () => {
         />
 
         <form.AppForm>
-          <form.SubmitButton>ADD EXPENSE</form.SubmitButton>
+          <form.SubmitButton type="submit">ADD EXPENSE</form.SubmitButton>
         </form.AppForm>
       </form>
     </>

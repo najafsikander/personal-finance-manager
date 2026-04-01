@@ -32,9 +32,9 @@ function RouteComponent() {
     <>
       <div className="w-full bg-white mt-5 p-4 pb-6 rounded-lg border border-white/20">
         <h3 className="font-semibold text-xl mb-5">Transactions</h3>
-        <section className="w-full flex flex-row gap-2">
+        <section className="w-full">
           <form
-            className="w-full flex gap-2"
+            className="w-full flex flex-row flex-wrap gap-2 items-center"
             onSubmit={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -97,7 +97,11 @@ function RouteComponent() {
             />
 
             <form.AppForm>
-              <form.SubmitButton>FILTER</form.SubmitButton>
+              <div className="flex items-end">
+                <form.SubmitButton className="h-[54px] px-6 my-0">
+                  FILTER
+                </form.SubmitButton>
+              </div>
             </form.AppForm>
           </form>
         </section>

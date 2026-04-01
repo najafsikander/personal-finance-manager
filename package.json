@@ -25,6 +25,7 @@
     "@tanstack/router-plugin": "^1.132.0",
     "@unpic/react": "^1.0.1",
     "chart.js": "^4.5.1",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.544.0",
     "nitro": "latest",
     "react": "^19.2.0",
