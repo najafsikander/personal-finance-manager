@@ -1,10 +1,7 @@
 import TransactionTable from "@/components/pages/Dashboard/TransactionTable";
 import FilterTransactions from "@/components/pages/Expenditures/View/FilterTransactions";
 import { TransactionTableColumns } from "@/data/default/columns";
-import { filterDefault } from "@/data/default/filters";
 import { TransactionsData } from "@/data/transactions";
-import { useAppForm } from "@/lib/forms/useAppForm";
-import { filterSchema } from "@/schemas/filters";
 import { createFileRoute } from "@tanstack/react-router";
 
 // TODO: ADD FILTER AND A PROP TO HIDE SHOW FILTER
