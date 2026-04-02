@@ -33,6 +33,7 @@ const ExpenseForm = () => {
               label="Payment Name"
               placeholder="Add Name"
               required={true}
+              size="lg"
             />
           )}
         />
@@ -43,13 +44,14 @@ const ExpenseForm = () => {
               label="Amount"
               placeholder="Add Amount"
               required={true}
+              size="lg"
             />
           )}
         />
         <form.AppField
           name="currency"
           children={(field) => (
-            <field.SelectField label="Currency" required={true}>
+            <field.SelectField label="Currency" required={true} size="lg">
               <option value="AED">AED</option>
               <option value="USD">USD</option>
             </field.SelectField>
@@ -62,13 +64,14 @@ const ExpenseForm = () => {
               label="Date"
               placeholder="Add Date"
               required={true}
+              size="lg"
             />
           )}
         />
         <form.AppField
           name="method"
           children={(field) => (
-            <field.SelectField label="Payment Method" required={true}>
+            <field.SelectField label="Payment Method" required={true} size="lg">
               <option value="cash">Cash</option>
               <option value="debitCard">Debit Card</option>
               <option value="creditCard">Credit Card</option>
@@ -78,7 +81,7 @@ const ExpenseForm = () => {
         <form.AppField
           name="category"
           children={(field) => (
-            <field.SelectField label="Category" required={true}>
+            <field.SelectField label="Category" required={true} size="lg">
               <option value="electricity">Electricity</option>
               <option value="grocery">Grocery</option>
             </field.SelectField>
@@ -91,6 +94,7 @@ const ExpenseForm = () => {
               label="Note"
               placeholder="Add Note"
               required={true}
+              size="lg"
             />
           )}
         />

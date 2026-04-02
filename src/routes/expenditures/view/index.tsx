@@ -98,7 +98,7 @@ function RouteComponent() {
 
             <form.AppForm>
               <div className="flex items-end">
-                <form.SubmitButton className="h-[54px] px-6 my-0">
+                <form.SubmitButton className="h-12 my-0">
                   FILTER
                 </form.SubmitButton>
               </div>
