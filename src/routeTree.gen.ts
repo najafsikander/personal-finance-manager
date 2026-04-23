@@ -9,9 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SettingsRouteRouteImport } from './routes/settings/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SettingsIndexRouteImport } from './routes/settings/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as SplatIndexRouteImport } from './routes/$/index'
+import { Route as SettingsSecurityIndexRouteImport } from './routes/settings/security/index'
+import { Route as SettingsProfileIndexRouteImport } from './routes/settings/profile/index'
+import { Route as SettingsNotificationsIndexRouteImport } from './routes/settings/notifications/index'
 import { Route as ExpendituresViewIndexRouteImport } from './routes/expenditures/view/index'
 import { Route as ExpendituresBulkUploadIndexRouteImport } from './routes/expenditures/bulk-upload/index'
 import { Route as ExpendituresAddIndexRouteImport } from './routes/expenditures/add/index'
@@ -23,10 +28,20 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
+const SettingsRouteRoute = SettingsRouteRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsIndexRoute = SettingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SettingsRouteRoute,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/dashboard/',
@@ -38,6 +53,22 @@ const SplatIndexRoute = SplatIndexRouteImport.update({
   path: '/$/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsSecurityIndexRoute = SettingsSecurityIndexRouteImport.update({
+  id: '/security/',
+  path: '/security/',
+  getParentRoute: () => SettingsRouteRoute,
+} as any)
+const SettingsProfileIndexRoute = SettingsProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => SettingsRouteRoute,
+} as any)
+const SettingsNotificationsIndexRoute =
+  SettingsNotificationsIndexRouteImport.update({
+    id: '/notifications/',
+    path: '/notifications/',
+    getParentRoute: () => SettingsRouteRoute,
+  } as any)
 const ExpendituresViewIndexRoute = ExpendituresViewIndexRouteImport.update({
   id: '/expenditures/view/',
   path: '/expenditures/view/',
@@ -92,14 +123,19 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/settings': typeof SettingsRouteRouteWithChildren
   '/$': typeof SplatIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/settings/': typeof SettingsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add': typeof ExpendituresAddIndexRoute
   '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
   '/expenditures/view': typeof ExpendituresViewIndexRoute
+  '/settings/notifications': typeof SettingsNotificationsIndexRoute
+  '/settings/profile': typeof SettingsProfileIndexRoute
+  '/settings/security': typeof SettingsSecurityIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -109,12 +145,16 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/settings': typeof SettingsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add': typeof ExpendituresAddIndexRoute
   '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
   '/expenditures/view': typeof ExpendituresViewIndexRoute
+  '/settings/notifications': typeof SettingsNotificationsIndexRoute
+  '/settings/profile': typeof SettingsProfileIndexRoute
+  '/settings/security': typeof SettingsSecurityIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -123,14 +163,19 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/settings': typeof SettingsRouteRouteWithChildren
   '/$/': typeof SplatIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/settings/': typeof SettingsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
   '/expenditures/add/': typeof ExpendituresAddIndexRoute
   '/expenditures/bulk-upload/': typeof ExpendituresBulkUploadIndexRoute
   '/expenditures/view/': typeof ExpendituresViewIndexRoute
+  '/settings/notifications/': typeof SettingsNotificationsIndexRoute
+  '/settings/profile/': typeof SettingsProfileIndexRoute
+  '/settings/security/': typeof SettingsSecurityIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
@@ -140,14 +185,19 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/settings'
     | '/$'
     | '/dashboard'
+    | '/settings/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add'
     | '/expenditures/bulk-upload'
     | '/expenditures/view'
+    | '/settings/notifications'
+    | '/settings/profile'
+    | '/settings/security'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -157,12 +207,16 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/dashboard'
+    | '/settings'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add'
     | '/expenditures/bulk-upload'
     | '/expenditures/view'
+    | '/settings/notifications'
+    | '/settings/profile'
+    | '/settings/security'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -170,14 +224,19 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/settings'
     | '/$/'
     | '/dashboard/'
+    | '/settings/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
     | '/expenditures/add/'
     | '/expenditures/bulk-upload/'
     | '/expenditures/view/'
+    | '/settings/notifications/'
+    | '/settings/profile/'
+    | '/settings/security/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
@@ -186,6 +245,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
   SplatIndexRoute: typeof SplatIndexRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
@@ -202,12 +262,26 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/settings/': {
+      id: '/settings/'
+      path: '/'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof SettingsIndexRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
     '/dashboard/': {
       id: '/dashboard/'
@@ -222,6 +296,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/$'
       preLoaderRoute: typeof SplatIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/settings/security/': {
+      id: '/settings/security/'
+      path: '/security'
+      fullPath: '/settings/security'
+      preLoaderRoute: typeof SettingsSecurityIndexRouteImport
+      parentRoute: typeof SettingsRouteRoute
+    }
+    '/settings/profile/': {
+      id: '/settings/profile/'
+      path: '/profile'
+      fullPath: '/settings/profile'
+      preLoaderRoute: typeof SettingsProfileIndexRouteImport
+      parentRoute: typeof SettingsRouteRoute
+    }
+    '/settings/notifications/': {
+      id: '/settings/notifications/'
+      path: '/notifications'
+      fullPath: '/settings/notifications'
+      preLoaderRoute: typeof SettingsNotificationsIndexRouteImport
+      parentRoute: typeof SettingsRouteRoute
     }
     '/expenditures/view/': {
       id: '/expenditures/view/'
@@ -296,8 +391,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface SettingsRouteRouteChildren {
+  SettingsIndexRoute: typeof SettingsIndexRoute
+  SettingsNotificationsIndexRoute: typeof SettingsNotificationsIndexRoute
+  SettingsProfileIndexRoute: typeof SettingsProfileIndexRoute
+  SettingsSecurityIndexRoute: typeof SettingsSecurityIndexRoute
+}
+
+const SettingsRouteRouteChildren: SettingsRouteRouteChildren = {
+  SettingsIndexRoute: SettingsIndexRoute,
+  SettingsNotificationsIndexRoute: SettingsNotificationsIndexRoute,
+  SettingsProfileIndexRoute: SettingsProfileIndexRoute,
+  SettingsSecurityIndexRoute: SettingsSecurityIndexRoute,
+}
+
+const SettingsRouteRouteWithChildren = SettingsRouteRoute._addFileChildren(
+  SettingsRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SettingsRouteRoute: SettingsRouteRouteWithChildren,
   SplatIndexRoute: SplatIndexRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
