@@ -7,19 +7,18 @@ export const Route = createFileRoute("/settings/profile/")({
 });
 
 function RouteComponent() {
-  const imageUrl: string =
-    "https://thefincheranalyst.com/wp-content/uploads/2018/07/1995-seven-john-doe.jpg";
+  const imageUrl: string = "/assets/images/john-doe.jpg";
 
   return (
     <>
       <section className="w-full flex flex-row gap-4 justify-start pl-2">
-        <Profile width="20" height="20" imageUrl={imageUrl} />
+        <Profile width="80" height="80" imageUrl={imageUrl} />
         <div className="flex flex-col justify-center">
           <h1 className="text-xl font-medium text-black">Account Username</h1>
           <h3 className="font-medium text-slate-600">Account Owner</h3>
         </div>
       </section>
-      <section className="w-full mt-2">
+      <section className="w-full mt-4">
         <div className="flex flex-row justify-between items-center">
           <h1 className="font-medium text-lg">About Me</h1>
           <div className="p-2 bg-gray-200 rounded-3xl cursor-pointer">
