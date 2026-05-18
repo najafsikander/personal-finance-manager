@@ -1,3 +1,4 @@
+import ProfileForm from "@/components/pages/Settings/Profile/ProfileForm";
 import Profile from "@/components/ui/avatar/profile";
 import { createFileRoute } from "@tanstack/react-router";
 import { PencilLine } from "lucide-react";
@@ -54,6 +55,7 @@ function RouteComponent() {
           </div>
         </div>
       </section>
+      <ProfileForm />
     </>
   );
 }
