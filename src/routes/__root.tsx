@@ -1,4 +1,9 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
+import {
+  HeadContent,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { formDevtoolsPlugin } from "@tanstack/react-form-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
@@ -45,10 +50,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
-        <div className="w-full h-[93vh] md:min-h-screen lg:min-h-screen bg-slate-900 p-4 md:p-4 lg:p-4 overflow-auto">
-          {children}
-        </div>
+        <Outlet />
         <TanStackDevtools
           config={{
             position: "bottom-right",

@@ -2,7 +2,7 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { Bell, CircleUser, Shield } from "lucide-react";
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/dashboard/settings")({
   component: SettingsLayout,
 });
 
@@ -16,7 +16,7 @@ function SettingsLayout() {
           <ul className="flex flex-col gap-2">
             <li>
               <Link
-                to="/settings/profile"
+                to="/dashboard/settings/profile"
                 className="block p-2 rounded-md hover:bg-gray-200 transition"
                 activeProps={{ className: "block p-2 rounded-md bg-gray-300" }}
               >
@@ -29,7 +29,7 @@ function SettingsLayout() {
 
             <li>
               <Link
-                to="/settings/security"
+                to="/dashboard/settings/security"
                 className="block p-2 rounded-md hover:bg-gray-200 transition"
                 activeProps={{ className: "block p-2 rounded-md bg-gray-300" }}
               >
@@ -42,7 +42,7 @@ function SettingsLayout() {
 
             <li>
               <Link
-                to="/settings/notifications"
+                to="/dashboard/settings/notifications"
                 className="block p-2 rounded-md hover:bg-gray-200 transition"
                 activeProps={{ className: "block p-2 rounded-md bg-gray-300" }}
               >

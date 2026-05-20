@@ -3,7 +3,7 @@ import Profile from "@/components/ui/avatar/profile";
 import { createFileRoute } from "@tanstack/react-router";
 import { PencilLine } from "lucide-react";
 
-export const Route = createFileRoute("/settings/profile/")({
+export const Route = createFileRoute("/dashboard/settings/profile/")({
   component: RouteComponent,
 });
 

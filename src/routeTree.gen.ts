@@ -9,28 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SettingsRouteRouteImport } from './routes/settings/route'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
+import { Route as AuthRouteRouteImport } from './routes/auth/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as SettingsIndexRouteImport } from './routes/settings/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as SplatIndexRouteImport } from './routes/$/index'
-import { Route as SettingsSecurityIndexRouteImport } from './routes/settings/security/index'
-import { Route as SettingsProfileIndexRouteImport } from './routes/settings/profile/index'
-import { Route as SettingsNotificationsIndexRouteImport } from './routes/settings/notifications/index'
-import { Route as ExpendituresViewIndexRouteImport } from './routes/expenditures/view/index'
-import { Route as ExpendituresBulkUploadIndexRouteImport } from './routes/expenditures/bulk-upload/index'
-import { Route as ExpendituresAddIndexRouteImport } from './routes/expenditures/add/index'
+import { Route as DashboardSettingsRouteRouteImport } from './routes/dashboard/settings/route'
+import { Route as DashboardSettingsIndexRouteImport } from './routes/dashboard/settings/index'
+import { Route as AuthSignupIndexRouteImport } from './routes/auth/signup/index'
+import { Route as AuthSigninIndexRouteImport } from './routes/auth/signin/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
 import { Route as DemoStartSsrIndexRouteImport } from './routes/demo/start.ssr.index'
+import { Route as DashboardSettingsSecurityIndexRouteImport } from './routes/dashboard/settings/security/index'
+import { Route as DashboardSettingsProfileIndexRouteImport } from './routes/dashboard/settings/profile/index'
+import { Route as DashboardSettingsNotificationsIndexRouteImport } from './routes/dashboard/settings/notifications/index'
+import { Route as DashboardExpendituresViewIndexRouteImport } from './routes/dashboard/expenditures/view/index'
+import { Route as DashboardExpendituresBulkUploadIndexRouteImport } from './routes/dashboard/expenditures/bulk-upload/index'
+import { Route as DashboardExpendituresAddIndexRouteImport } from './routes/dashboard/expenditures/add/index'
 import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr.spa-mode'
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
-const SettingsRouteRoute = SettingsRouteRouteImport.update({
-  id: '/settings',
-  path: '/settings',
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRouteRoute = AuthRouteRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -38,52 +47,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsIndexRoute = SettingsIndexRouteImport.update({
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => SettingsRouteRoute,
-} as any)
-const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/dashboard/',
-  path: '/dashboard/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const SplatIndexRoute = SplatIndexRouteImport.update({
   id: '/$/',
   path: '/$/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SettingsSecurityIndexRoute = SettingsSecurityIndexRouteImport.update({
-  id: '/security/',
-  path: '/security/',
-  getParentRoute: () => SettingsRouteRoute,
+const DashboardSettingsRouteRoute = DashboardSettingsRouteRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
-const SettingsProfileIndexRoute = SettingsProfileIndexRouteImport.update({
-  id: '/profile/',
-  path: '/profile/',
-  getParentRoute: () => SettingsRouteRoute,
+const DashboardSettingsIndexRoute = DashboardSettingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardSettingsRouteRoute,
 } as any)
-const SettingsNotificationsIndexRoute =
-  SettingsNotificationsIndexRouteImport.update({
-    id: '/notifications/',
-    path: '/notifications/',
-    getParentRoute: () => SettingsRouteRoute,
-  } as any)
-const ExpendituresViewIndexRoute = ExpendituresViewIndexRouteImport.update({
-  id: '/expenditures/view/',
-  path: '/expenditures/view/',
-  getParentRoute: () => rootRouteImport,
+const AuthSignupIndexRoute = AuthSignupIndexRouteImport.update({
+  id: '/signup/',
+  path: '/signup/',
+  getParentRoute: () => AuthRouteRoute,
 } as any)
-const ExpendituresBulkUploadIndexRoute =
-  ExpendituresBulkUploadIndexRouteImport.update({
-    id: '/expenditures/bulk-upload/',
-    path: '/expenditures/bulk-upload/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ExpendituresAddIndexRoute = ExpendituresAddIndexRouteImport.update({
-  id: '/expenditures/add/',
-  path: '/expenditures/add/',
-  getParentRoute: () => rootRouteImport,
+const AuthSigninIndexRoute = AuthSigninIndexRouteImport.update({
+  id: '/signin/',
+  path: '/signin/',
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
   id: '/demo/start/server-funcs',
@@ -105,6 +97,42 @@ const DemoStartSsrIndexRoute = DemoStartSsrIndexRouteImport.update({
   path: '/demo/start/ssr/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardSettingsSecurityIndexRoute =
+  DashboardSettingsSecurityIndexRouteImport.update({
+    id: '/security/',
+    path: '/security/',
+    getParentRoute: () => DashboardSettingsRouteRoute,
+  } as any)
+const DashboardSettingsProfileIndexRoute =
+  DashboardSettingsProfileIndexRouteImport.update({
+    id: '/profile/',
+    path: '/profile/',
+    getParentRoute: () => DashboardSettingsRouteRoute,
+  } as any)
+const DashboardSettingsNotificationsIndexRoute =
+  DashboardSettingsNotificationsIndexRouteImport.update({
+    id: '/notifications/',
+    path: '/notifications/',
+    getParentRoute: () => DashboardSettingsRouteRoute,
+  } as any)
+const DashboardExpendituresViewIndexRoute =
+  DashboardExpendituresViewIndexRouteImport.update({
+    id: '/expenditures/view/',
+    path: '/expenditures/view/',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
+const DashboardExpendituresBulkUploadIndexRoute =
+  DashboardExpendituresBulkUploadIndexRouteImport.update({
+    id: '/expenditures/bulk-upload/',
+    path: '/expenditures/bulk-upload/',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
+const DashboardExpendituresAddIndexRoute =
+  DashboardExpendituresAddIndexRouteImport.update({
+    id: '/expenditures/add/',
+    path: '/expenditures/add/',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
 const DemoStartSsrSpaModeRoute = DemoStartSsrSpaModeRouteImport.update({
   id: '/demo/start/ssr/spa-mode',
   path: '/demo/start/ssr/spa-mode',
@@ -123,137 +151,156 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRouteRouteWithChildren
+  '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/dashboard/settings': typeof DashboardSettingsRouteRouteWithChildren
   '/$': typeof SplatIndexRoute
-  '/dashboard': typeof DashboardIndexRoute
-  '/settings/': typeof SettingsIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/expenditures/add': typeof ExpendituresAddIndexRoute
-  '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
-  '/expenditures/view': typeof ExpendituresViewIndexRoute
-  '/settings/notifications': typeof SettingsNotificationsIndexRoute
-  '/settings/profile': typeof SettingsProfileIndexRoute
-  '/settings/security': typeof SettingsSecurityIndexRoute
+  '/auth/signin': typeof AuthSigninIndexRoute
+  '/auth/signup': typeof AuthSignupIndexRoute
+  '/dashboard/settings/': typeof DashboardSettingsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/expenditures/add': typeof DashboardExpendituresAddIndexRoute
+  '/dashboard/expenditures/bulk-upload': typeof DashboardExpendituresBulkUploadIndexRoute
+  '/dashboard/expenditures/view': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/notifications': typeof DashboardSettingsNotificationsIndexRoute
+  '/dashboard/settings/profile': typeof DashboardSettingsProfileIndexRoute
+  '/dashboard/settings/security': typeof DashboardSettingsSecurityIndexRoute
   '/demo/start/ssr': typeof DemoStartSsrIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRouteRouteWithChildren
   '/$': typeof SplatIndexRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/settings': typeof SettingsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/expenditures/add': typeof ExpendituresAddIndexRoute
-  '/expenditures/bulk-upload': typeof ExpendituresBulkUploadIndexRoute
-  '/expenditures/view': typeof ExpendituresViewIndexRoute
-  '/settings/notifications': typeof SettingsNotificationsIndexRoute
-  '/settings/profile': typeof SettingsProfileIndexRoute
-  '/settings/security': typeof SettingsSecurityIndexRoute
+  '/auth/signin': typeof AuthSigninIndexRoute
+  '/auth/signup': typeof AuthSignupIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/expenditures/add': typeof DashboardExpendituresAddIndexRoute
+  '/dashboard/expenditures/bulk-upload': typeof DashboardExpendituresBulkUploadIndexRoute
+  '/dashboard/expenditures/view': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/notifications': typeof DashboardSettingsNotificationsIndexRoute
+  '/dashboard/settings/profile': typeof DashboardSettingsProfileIndexRoute
+  '/dashboard/settings/security': typeof DashboardSettingsSecurityIndexRoute
   '/demo/start/ssr': typeof DemoStartSsrIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/settings': typeof SettingsRouteRouteWithChildren
+  '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/dashboard/settings': typeof DashboardSettingsRouteRouteWithChildren
   '/$/': typeof SplatIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
-  '/settings/': typeof SettingsIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/expenditures/add/': typeof ExpendituresAddIndexRoute
-  '/expenditures/bulk-upload/': typeof ExpendituresBulkUploadIndexRoute
-  '/expenditures/view/': typeof ExpendituresViewIndexRoute
-  '/settings/notifications/': typeof SettingsNotificationsIndexRoute
-  '/settings/profile/': typeof SettingsProfileIndexRoute
-  '/settings/security/': typeof SettingsSecurityIndexRoute
+  '/auth/signin/': typeof AuthSigninIndexRoute
+  '/auth/signup/': typeof AuthSignupIndexRoute
+  '/dashboard/settings/': typeof DashboardSettingsIndexRoute
   '/demo/start/ssr/data-only': typeof DemoStartSsrDataOnlyRoute
   '/demo/start/ssr/full-ssr': typeof DemoStartSsrFullSsrRoute
   '/demo/start/ssr/spa-mode': typeof DemoStartSsrSpaModeRoute
+  '/dashboard/expenditures/add/': typeof DashboardExpendituresAddIndexRoute
+  '/dashboard/expenditures/bulk-upload/': typeof DashboardExpendituresBulkUploadIndexRoute
+  '/dashboard/expenditures/view/': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/notifications/': typeof DashboardSettingsNotificationsIndexRoute
+  '/dashboard/settings/profile/': typeof DashboardSettingsProfileIndexRoute
+  '/dashboard/settings/security/': typeof DashboardSettingsSecurityIndexRoute
   '/demo/start/ssr/': typeof DemoStartSsrIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/settings'
-    | '/$'
+    | '/auth'
     | '/dashboard'
-    | '/settings/'
+    | '/dashboard/settings'
+    | '/$'
+    | '/dashboard/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
-    | '/expenditures/add'
-    | '/expenditures/bulk-upload'
-    | '/expenditures/view'
-    | '/settings/notifications'
-    | '/settings/profile'
-    | '/settings/security'
+    | '/auth/signin'
+    | '/auth/signup'
+    | '/dashboard/settings/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/expenditures/add'
+    | '/dashboard/expenditures/bulk-upload'
+    | '/dashboard/expenditures/view'
+    | '/dashboard/settings/notifications'
+    | '/dashboard/settings/profile'
+    | '/dashboard/settings/security'
     | '/demo/start/ssr'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/$'
     | '/dashboard'
-    | '/settings'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
-    | '/expenditures/add'
-    | '/expenditures/bulk-upload'
-    | '/expenditures/view'
-    | '/settings/notifications'
-    | '/settings/profile'
-    | '/settings/security'
+    | '/auth/signin'
+    | '/auth/signup'
+    | '/dashboard/settings'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/expenditures/add'
+    | '/dashboard/expenditures/bulk-upload'
+    | '/dashboard/expenditures/view'
+    | '/dashboard/settings/notifications'
+    | '/dashboard/settings/profile'
+    | '/dashboard/settings/security'
     | '/demo/start/ssr'
   id:
     | '__root__'
     | '/'
-    | '/settings'
+    | '/auth'
+    | '/dashboard'
+    | '/dashboard/settings'
     | '/$/'
     | '/dashboard/'
-    | '/settings/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
-    | '/expenditures/add/'
-    | '/expenditures/bulk-upload/'
-    | '/expenditures/view/'
-    | '/settings/notifications/'
-    | '/settings/profile/'
-    | '/settings/security/'
+    | '/auth/signin/'
+    | '/auth/signup/'
+    | '/dashboard/settings/'
     | '/demo/start/ssr/data-only'
     | '/demo/start/ssr/full-ssr'
     | '/demo/start/ssr/spa-mode'
+    | '/dashboard/expenditures/add/'
+    | '/dashboard/expenditures/bulk-upload/'
+    | '/dashboard/expenditures/view/'
+    | '/dashboard/settings/notifications/'
+    | '/dashboard/settings/profile/'
+    | '/dashboard/settings/security/'
     | '/demo/start/ssr/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  SettingsRouteRoute: typeof SettingsRouteRouteWithChildren
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   SplatIndexRoute: typeof SplatIndexRoute
-  DashboardIndexRoute: typeof DashboardIndexRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
-  ExpendituresAddIndexRoute: typeof ExpendituresAddIndexRoute
-  ExpendituresBulkUploadIndexRoute: typeof ExpendituresBulkUploadIndexRoute
-  ExpendituresViewIndexRoute: typeof ExpendituresViewIndexRoute
   DemoStartSsrDataOnlyRoute: typeof DemoStartSsrDataOnlyRoute
   DemoStartSsrFullSsrRoute: typeof DemoStartSsrFullSsrRoute
   DemoStartSsrSpaModeRoute: typeof DemoStartSsrSpaModeRoute
@@ -262,11 +309,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteRouteImport
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -276,19 +330,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings/': {
-      id: '/settings/'
-      path: '/'
-      fullPath: '/settings/'
-      preLoaderRoute: typeof SettingsIndexRouteImport
-      parentRoute: typeof SettingsRouteRoute
-    }
     '/dashboard/': {
       id: '/dashboard/'
-      path: '/dashboard'
-      fullPath: '/dashboard'
+      path: '/'
+      fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/$/': {
       id: '/$/'
@@ -297,47 +344,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SplatIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/settings/security/': {
-      id: '/settings/security/'
-      path: '/security'
-      fullPath: '/settings/security'
-      preLoaderRoute: typeof SettingsSecurityIndexRouteImport
-      parentRoute: typeof SettingsRouteRoute
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
-    '/settings/profile/': {
-      id: '/settings/profile/'
-      path: '/profile'
-      fullPath: '/settings/profile'
-      preLoaderRoute: typeof SettingsProfileIndexRouteImport
-      parentRoute: typeof SettingsRouteRoute
+    '/dashboard/settings/': {
+      id: '/dashboard/settings/'
+      path: '/'
+      fullPath: '/dashboard/settings/'
+      preLoaderRoute: typeof DashboardSettingsIndexRouteImport
+      parentRoute: typeof DashboardSettingsRouteRoute
     }
-    '/settings/notifications/': {
-      id: '/settings/notifications/'
-      path: '/notifications'
-      fullPath: '/settings/notifications'
-      preLoaderRoute: typeof SettingsNotificationsIndexRouteImport
-      parentRoute: typeof SettingsRouteRoute
+    '/auth/signup/': {
+      id: '/auth/signup/'
+      path: '/signup'
+      fullPath: '/auth/signup'
+      preLoaderRoute: typeof AuthSignupIndexRouteImport
+      parentRoute: typeof AuthRouteRoute
     }
-    '/expenditures/view/': {
-      id: '/expenditures/view/'
-      path: '/expenditures/view'
-      fullPath: '/expenditures/view'
-      preLoaderRoute: typeof ExpendituresViewIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/expenditures/bulk-upload/': {
-      id: '/expenditures/bulk-upload/'
-      path: '/expenditures/bulk-upload'
-      fullPath: '/expenditures/bulk-upload'
-      preLoaderRoute: typeof ExpendituresBulkUploadIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/expenditures/add/': {
-      id: '/expenditures/add/'
-      path: '/expenditures/add'
-      fullPath: '/expenditures/add'
-      preLoaderRoute: typeof ExpendituresAddIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/auth/signin/': {
+      id: '/auth/signin/'
+      path: '/signin'
+      fullPath: '/auth/signin'
+      preLoaderRoute: typeof AuthSigninIndexRouteImport
+      parentRoute: typeof AuthRouteRoute
     }
     '/demo/start/server-funcs': {
       id: '/demo/start/server-funcs'
@@ -367,6 +400,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoStartSsrIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/settings/security/': {
+      id: '/dashboard/settings/security/'
+      path: '/security'
+      fullPath: '/dashboard/settings/security'
+      preLoaderRoute: typeof DashboardSettingsSecurityIndexRouteImport
+      parentRoute: typeof DashboardSettingsRouteRoute
+    }
+    '/dashboard/settings/profile/': {
+      id: '/dashboard/settings/profile/'
+      path: '/profile'
+      fullPath: '/dashboard/settings/profile'
+      preLoaderRoute: typeof DashboardSettingsProfileIndexRouteImport
+      parentRoute: typeof DashboardSettingsRouteRoute
+    }
+    '/dashboard/settings/notifications/': {
+      id: '/dashboard/settings/notifications/'
+      path: '/notifications'
+      fullPath: '/dashboard/settings/notifications'
+      preLoaderRoute: typeof DashboardSettingsNotificationsIndexRouteImport
+      parentRoute: typeof DashboardSettingsRouteRoute
+    }
+    '/dashboard/expenditures/view/': {
+      id: '/dashboard/expenditures/view/'
+      path: '/expenditures/view'
+      fullPath: '/dashboard/expenditures/view'
+      preLoaderRoute: typeof DashboardExpendituresViewIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/expenditures/bulk-upload/': {
+      id: '/dashboard/expenditures/bulk-upload/'
+      path: '/expenditures/bulk-upload'
+      fullPath: '/dashboard/expenditures/bulk-upload'
+      preLoaderRoute: typeof DashboardExpendituresBulkUploadIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/expenditures/add/': {
+      id: '/dashboard/expenditures/add/'
+      path: '/expenditures/add'
+      fullPath: '/dashboard/expenditures/add'
+      preLoaderRoute: typeof DashboardExpendituresAddIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/demo/start/ssr/spa-mode': {
       id: '/demo/start/ssr/spa-mode'
       path: '/demo/start/ssr/spa-mode'
@@ -391,35 +466,70 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface SettingsRouteRouteChildren {
-  SettingsIndexRoute: typeof SettingsIndexRoute
-  SettingsNotificationsIndexRoute: typeof SettingsNotificationsIndexRoute
-  SettingsProfileIndexRoute: typeof SettingsProfileIndexRoute
-  SettingsSecurityIndexRoute: typeof SettingsSecurityIndexRoute
+interface AuthRouteRouteChildren {
+  AuthSigninIndexRoute: typeof AuthSigninIndexRoute
+  AuthSignupIndexRoute: typeof AuthSignupIndexRoute
 }
 
-const SettingsRouteRouteChildren: SettingsRouteRouteChildren = {
-  SettingsIndexRoute: SettingsIndexRoute,
-  SettingsNotificationsIndexRoute: SettingsNotificationsIndexRoute,
-  SettingsProfileIndexRoute: SettingsProfileIndexRoute,
-  SettingsSecurityIndexRoute: SettingsSecurityIndexRoute,
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthSigninIndexRoute: AuthSigninIndexRoute,
+  AuthSignupIndexRoute: AuthSignupIndexRoute,
 }
 
-const SettingsRouteRouteWithChildren = SettingsRouteRoute._addFileChildren(
-  SettingsRouteRouteChildren,
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
+
+interface DashboardSettingsRouteRouteChildren {
+  DashboardSettingsIndexRoute: typeof DashboardSettingsIndexRoute
+  DashboardSettingsNotificationsIndexRoute: typeof DashboardSettingsNotificationsIndexRoute
+  DashboardSettingsProfileIndexRoute: typeof DashboardSettingsProfileIndexRoute
+  DashboardSettingsSecurityIndexRoute: typeof DashboardSettingsSecurityIndexRoute
+}
+
+const DashboardSettingsRouteRouteChildren: DashboardSettingsRouteRouteChildren =
+  {
+    DashboardSettingsIndexRoute: DashboardSettingsIndexRoute,
+    DashboardSettingsNotificationsIndexRoute:
+      DashboardSettingsNotificationsIndexRoute,
+    DashboardSettingsProfileIndexRoute: DashboardSettingsProfileIndexRoute,
+    DashboardSettingsSecurityIndexRoute: DashboardSettingsSecurityIndexRoute,
+  }
+
+const DashboardSettingsRouteRouteWithChildren =
+  DashboardSettingsRouteRoute._addFileChildren(
+    DashboardSettingsRouteRouteChildren,
+  )
+
+interface DashboardRouteRouteChildren {
+  DashboardSettingsRouteRoute: typeof DashboardSettingsRouteRouteWithChildren
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardExpendituresAddIndexRoute: typeof DashboardExpendituresAddIndexRoute
+  DashboardExpendituresBulkUploadIndexRoute: typeof DashboardExpendituresBulkUploadIndexRoute
+  DashboardExpendituresViewIndexRoute: typeof DashboardExpendituresViewIndexRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardSettingsRouteRoute: DashboardSettingsRouteRouteWithChildren,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardExpendituresAddIndexRoute: DashboardExpendituresAddIndexRoute,
+  DashboardExpendituresBulkUploadIndexRoute:
+    DashboardExpendituresBulkUploadIndexRoute,
+  DashboardExpendituresViewIndexRoute: DashboardExpendituresViewIndexRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  SettingsRouteRoute: SettingsRouteRouteWithChildren,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
   SplatIndexRoute: SplatIndexRoute,
-  DashboardIndexRoute: DashboardIndexRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
-  ExpendituresAddIndexRoute: ExpendituresAddIndexRoute,
-  ExpendituresBulkUploadIndexRoute: ExpendituresBulkUploadIndexRoute,
-  ExpendituresViewIndexRoute: ExpendituresViewIndexRoute,
   DemoStartSsrDataOnlyRoute: DemoStartSsrDataOnlyRoute,
   DemoStartSsrFullSsrRoute: DemoStartSsrFullSsrRoute,
   DemoStartSsrSpaModeRoute: DemoStartSsrSpaModeRoute,

@@ -3,7 +3,7 @@ import UploadSection from "@/components/pages/Expenditures/BulkUpload/UploadSect
 import { createFileRoute } from "@tanstack/react-router";
 import { FilePlus } from "lucide-react";
 
-export const Route = createFileRoute("/expenditures/bulk-upload/")({
+export const Route = createFileRoute("/dashboard/expenditures/bulk-upload/")({
   component: RouteComponent,
 });
 

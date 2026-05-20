@@ -38,7 +38,7 @@ export default function Header() {
         </div>
 
         <nav className="flex-1 p-4 overflow-y-auto">
-          <Link
+          {/*<Link
             to="/"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
@@ -49,7 +49,7 @@ export default function Header() {
           >
             <Home size={20} />
             <span className="font-medium">Home</span>
-          </Link>
+          </Link>*/}
 
           <Link
             to="/dashboard"
@@ -65,7 +65,7 @@ export default function Header() {
           </Link>
 
           <Link
-            to="/expenditures/add"
+            to="/dashboard/expenditures/add"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
             activeProps={{
@@ -78,7 +78,7 @@ export default function Header() {
           </Link>
 
           <Link
-            to="/expenditures/view"
+            to="/dashboard/expenditures/view"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
             activeProps={{
@@ -91,7 +91,7 @@ export default function Header() {
           </Link>
 
           <Link
-            to="/settings"
+            to="/dashboard/settings"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
             activeProps={{
