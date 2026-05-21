@@ -3,7 +3,7 @@ import ExpenseForm from "@/components/pages/Expenditures/Add/ExpenseForm";
 import { createFileRoute } from "@tanstack/react-router";
 import { FilePlus } from "lucide-react";
 
-export const Route = createFileRoute("/expenditures/add/")({
+export const Route = createFileRoute("/dashboard/expenditures/add/")({
   component: RouteComponent,
 });
 
@@ -24,7 +24,7 @@ function RouteComponent() {
       <p>
         If you have multiple transactions, you can also{" "}
         <a
-          href="/expenditures/bulk-upload"
+          href="/dashboard/expenditures/bulk-upload"
           className="text-blue-600 font-medium hover:underline"
         >
           upload them using a file

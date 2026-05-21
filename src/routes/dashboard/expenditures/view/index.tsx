@@ -7,7 +7,7 @@ import { createFileRoute } from "@tanstack/react-router";
 // TODO: ADD FILTER AND A PROP TO HIDE SHOW FILTER
 // TODO: ADD PAGINATION AND SORTING AND PROPS TO HIDE SHOW THEM
 
-export const Route = createFileRoute("/expenditures/view/")({
+export const Route = createFileRoute("/dashboard/expenditures/view/")({
   component: RouteComponent,
 });
 

@@ -13,19 +13,21 @@ export const Route = createFileRoute("/")({ component: App });
 function App() {
   const navigate = useNavigate();
   return (
-    <section className="flex h-full flex-col items-center justify-center text-center">
-      <h1 className="text-3xl font-bold text-white">
-        Welcome to the Expense Tracker App!
-      </h1>
-      <p className="text-white font-medium text-2xl mt-2">
-        Analyze and manage your personal expenses effectively.
-      </p>
-      <button
-        className="mt-6 px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 cursor-pointer transition"
-        onClick={() => navigate({ to: "/dashboard" })}
-      >
-        Get Started
-      </button>
-    </section>
+    <div className="w-full h-[93vh] md:min-h-screen lg:min-h-screen bg-slate-900 p-4 md:p-4 lg:p-4 overflow-auto">
+      <section className="flex h-full flex-col items-center justify-center text-center">
+        <h1 className="text-3xl font-bold text-white">
+          Welcome to the Expense Tracker App!
+        </h1>
+        <p className="text-white font-medium text-2xl mt-2">
+          Analyze and manage your personal expenses effectively.
+        </p>
+        <button
+          className="mt-6 px-6 py-3 bg-slate-600 text-white rounded-lg hover:bg-slate-700 cursor-pointer transition"
+          onClick={() => navigate({ to: "/dashboard" })}
+        >
+          Get Started
+        </button>
+      </section>
+    </div>
   );
 }
