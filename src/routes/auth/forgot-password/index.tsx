@@ -1,17 +1,17 @@
-import { signinDefault } from "@/data/default/signin";
+import { forgotPasswordDefault } from "@/data/default/forgotpassword";
 import { useAppForm } from "@/lib/forms/useAppForm";
-import { signinSchema } from "@/schemas/signin";
+import { forgotPasswordSchema } from "@/schemas/forgotpassword";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/auth/signin/")({
+export const Route = createFileRoute("/auth/forgot-password/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   const form = useAppForm({
-    defaultValues: signinDefault,
+    defaultValues: forgotPasswordDefault,
     validators: {
-      onChange: signinSchema,
+      onChange: forgotPasswordSchema,
     },
     onSubmit: ({ value }) => {
       console.log("Value: ", form.state.values);
@@ -21,10 +21,9 @@ function RouteComponent() {
       console.log("INVALID submit", formApi.state.errors);
     },
   });
-
   return (
     <div className="w-1/2 flex flex-col items-center bg-white p-2 rounded-sm">
-      <h1 className="text-3xl font-medium mb-2">SignIn</h1>
+      <h1 className="text-3xl font-medium mb-2">Forgot Password</h1>
       <form
         className="w-1/2 text-left"
         onSubmit={(e) => {
@@ -46,34 +45,16 @@ function RouteComponent() {
           )}
         />
 
-        <form.AppField
-          name="password"
-          children={(field) => (
-            <field.PasswordField
-              label="Password"
-              placeholder="Enter Password"
-              required={true}
-              size="lg"
-            />
-          )}
-        />
         <p>
-          Dont have an account?{" "}
-          <a href="/auth/signup" className="text-blue-500 hover:underline mr-1">
-            Sign Up.
-          </a>
-          If you have forgot password,{" "}
-          <a
-            href="/auth/forgot-password"
-            className="text-blue-500 hover:underline"
-          >
-            Click Here
+          You have an account?{" "}
+          <a href="/auth/signin" className="text-blue-500 hover:underline mr-1">
+            Sign In.
           </a>
         </p>
 
         <div className="text-center">
           <form.AppForm>
-            <form.SubmitButton type="submit">SignIn</form.SubmitButton>
+            <form.SubmitButton type="submit">Submit</form.SubmitButton>
           </form.AppForm>
         </div>
       </form>

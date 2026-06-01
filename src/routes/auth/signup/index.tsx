@@ -103,6 +103,12 @@ function RouteComponent() {
             />
           )}
         />
+        <p>
+          Do you have an account?{" "}
+          <a href="/auth/signin" className="text-blue-500 hover:underline">
+            SignIn
+          </a>
+        </p>
 
         <div className="text-center">
           <form.AppForm>

@@ -18,6 +18,7 @@ import { Route as DashboardSettingsRouteRouteImport } from './routes/dashboard/s
 import { Route as DashboardSettingsIndexRouteImport } from './routes/dashboard/settings/index'
 import { Route as AuthSignupIndexRouteImport } from './routes/auth/signup/index'
 import { Route as AuthSigninIndexRouteImport } from './routes/auth/signin/index'
+import { Route as AuthForgotPasswordIndexRouteImport } from './routes/auth/forgot-password/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
@@ -75,6 +76,11 @@ const AuthSignupIndexRoute = AuthSignupIndexRouteImport.update({
 const AuthSigninIndexRoute = AuthSigninIndexRouteImport.update({
   id: '/signin/',
   path: '/signin/',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+const AuthForgotPasswordIndexRoute = AuthForgotPasswordIndexRouteImport.update({
+  id: '/forgot-password/',
+  path: '/forgot-password/',
   getParentRoute: () => AuthRouteRoute,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordIndexRoute
   '/auth/signin': typeof AuthSigninIndexRoute
   '/auth/signup': typeof AuthSignupIndexRoute
   '/dashboard/settings/': typeof DashboardSettingsIndexRoute
@@ -181,6 +188,7 @@ export interface FileRoutesByTo {
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordIndexRoute
   '/auth/signin': typeof AuthSigninIndexRoute
   '/auth/signup': typeof AuthSignupIndexRoute
   '/dashboard/settings': typeof DashboardSettingsIndexRoute
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
+  '/auth/forgot-password/': typeof AuthForgotPasswordIndexRoute
   '/auth/signin/': typeof AuthSigninIndexRoute
   '/auth/signup/': typeof AuthSignupIndexRoute
   '/dashboard/settings/': typeof DashboardSettingsIndexRoute
@@ -232,6 +241,7 @@ export interface FileRouteTypes {
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/auth/forgot-password'
     | '/auth/signin'
     | '/auth/signup'
     | '/dashboard/settings/'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/auth/forgot-password'
     | '/auth/signin'
     | '/auth/signup'
     | '/dashboard/settings'
@@ -278,6 +289,7 @@ export interface FileRouteTypes {
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
+    | '/auth/forgot-password/'
     | '/auth/signin/'
     | '/auth/signup/'
     | '/dashboard/settings/'
@@ -370,6 +382,13 @@ declare module '@tanstack/react-router' {
       path: '/signin'
       fullPath: '/auth/signin'
       preLoaderRoute: typeof AuthSigninIndexRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
+    '/auth/forgot-password/': {
+      id: '/auth/forgot-password/'
+      path: '/forgot-password'
+      fullPath: '/auth/forgot-password'
+      preLoaderRoute: typeof AuthForgotPasswordIndexRouteImport
       parentRoute: typeof AuthRouteRoute
     }
     '/demo/start/server-funcs': {
@@ -467,11 +486,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthRouteRouteChildren {
+  AuthForgotPasswordIndexRoute: typeof AuthForgotPasswordIndexRoute
   AuthSigninIndexRoute: typeof AuthSigninIndexRoute
   AuthSignupIndexRoute: typeof AuthSignupIndexRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthForgotPasswordIndexRoute: AuthForgotPasswordIndexRoute,
   AuthSigninIndexRoute: AuthSigninIndexRoute,
   AuthSignupIndexRoute: AuthSignupIndexRoute,
 }
