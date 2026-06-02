@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 
 import { useState } from "react";
-import { Home, Menu, SquareFunction, X } from "lucide-react";
+import { Menu, SquareFunction, X } from "lucide-react";
+import NotificationBtn from "../custom/NotificationBtn";
+import Avatar from "../custom/Avatar";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,16 +11,27 @@ export default function Header() {
   return (
     <>
       <header className="p-4 flex items-center bg-gray-800 text-white shadow-lg">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
-        <h1 className="ml-4 text-xl font-semibold">
-          <Link to="/">Personal Finance Manager</Link>
-        </h1>
+        {/*Outer Wrapper*/}
+        <div className="w-full flex flex-row justify-between items-center">
+          {/*Inner Wrapper & Grouping for Title & Menu Button*/}
+          <div className="flex items-center">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu size={24} />
+            </button>
+            <h1 className="ml-4 text-xl font-semibold">
+              <Link to="/">Personal Finance Manager</Link>
+            </h1>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <NotificationBtn />
+            <Avatar />
+          </div>
+        </div>
       </header>
 
       <aside
