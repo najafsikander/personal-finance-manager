@@ -1,5 +1,10 @@
 // src/routes/settings/route.tsx
-import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  Link,
+  Outlet,
+  useNavigate,
+} from "@tanstack/react-router";
 import { Bell, CircleUser, Shield } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard/settings")({
@@ -7,9 +12,15 @@ export const Route = createFileRoute("/dashboard/settings")({
 });
 
 function SettingsLayout() {
+  const navigate = useNavigate();
   return (
     <div className="w-full bg-white mt-5 p-4 pb-6 rounded-lg border border-white/20">
-      <h3 className="font-semibold text-xl mb-5">Settings</h3>
+      <h3
+        className="font-semibold text-xl mb-5 cursor-pointer hover:text-gray-700 transition"
+        onClick={() => navigate({ to: "/dashboard/settings" })}
+      >
+        Settings
+      </h3>
 
       <div className="w-full flex gap-3 mt-3">
         <aside className="w-64 border border-slate-300 bg-gray-100 p-2 rounded-md">
