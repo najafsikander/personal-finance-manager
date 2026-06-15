@@ -1,8 +1,13 @@
 import { profileDefault } from "@/data/default/profile";
 import { useAppForm } from "@/lib/forms/useAppForm";
 import { profileSchema } from "@/schemas/profile";
+import { FC } from "react";
 
-const ProfileForm = () => {
+type Props = {
+  readOnly?: boolean;
+};
+
+const ProfileForm: FC<Props> = ({ readOnly = true }) => {
   const form = useAppForm({
     defaultValues: profileDefault,
     validators: {
@@ -42,6 +47,7 @@ const ProfileForm = () => {
                 placeholder="Add Name"
                 required={true}
                 size="lg"
+                readOnly={readOnly}
               />
             )}
           />
@@ -53,6 +59,7 @@ const ProfileForm = () => {
                 placeholder="Add Name"
                 required={true}
                 size="lg"
+                readOnly={readOnly}
               />
             )}
           />
@@ -64,6 +71,7 @@ const ProfileForm = () => {
                 placeholder="Add Phone Number"
                 required={true}
                 size="lg"
+                readOnly={readOnly}
               />
             )}
           />
@@ -75,6 +83,7 @@ const ProfileForm = () => {
                 placeholder="Add Email"
                 required={true}
                 size="lg"
+                readOnly={readOnly}
               />
             )}
           />
@@ -87,11 +96,14 @@ const ProfileForm = () => {
               placeholder="Add Bio"
               required={true}
               size="lg"
+              readOnly={readOnly}
             />
           )}
         />
         <form.AppForm>
-          <form.SubmitButton type="submit">Update Profile</form.SubmitButton>
+          <form.SubmitButton readonly={readOnly} type="submit">
+            Update Profile
+          </form.SubmitButton>
         </form.AppForm>
       </form>
     </div>

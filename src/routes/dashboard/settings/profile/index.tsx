@@ -3,11 +3,20 @@ import ProfileAvatar from "@/components/ui/avatar/profile-avatar";
 import { createFileRoute } from "@tanstack/react-router";
 import { PencilLine } from "lucide-react";
 
+type ProfileSearch = {
+  readOnly: boolean;
+};
+
 export const Route = createFileRoute("/dashboard/settings/profile/")({
   component: RouteComponent,
+  validateSearch: (search): ProfileSearch => {
+    const { readOnly } = search;
+    return { readOnly: readOnly as boolean };
+  },
 });
 
 function RouteComponent() {
+  const { readOnly } = Route.useSearch();
   const imageUrl: string = "/assets/images/john-doe.jpg";
 
   return (
@@ -55,7 +64,7 @@ function RouteComponent() {
           </div>
         </div>
       </section>
-      <ProfileForm />
+      <ProfileForm readOnly={readOnly} />
     </>
   );
 }
