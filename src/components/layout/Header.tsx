@@ -3,9 +3,10 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, SquareFunction, X } from "lucide-react";
 import NotificationBtn from "../custom/NotificationBtn";
-import Avatar from "../custom/Avatar";
+import ProfileAvatar from "../ui/avatar/profile-avatar";
 
 export default function Header() {
+  const imageUrl: string = "/assets/images/john-doe.jpg";
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,7 +30,7 @@ export default function Header() {
 
           <div className="flex items-center gap-3">
             <NotificationBtn />
-            <Avatar />
+            <ProfileAvatar width="50" height="50" imageUrl={imageUrl} />
           </div>
         </div>
       </header>

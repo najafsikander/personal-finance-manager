@@ -6,7 +6,7 @@ type Props = {
   imageUrl: string;
 };
 
-const Profile: FC<Props> = ({ width, height, imageUrl }) => {
+const ProfileAvatar: FC<Props> = ({ width, height, imageUrl }) => {
   return (
     <img
       src={imageUrl}
@@ -20,4 +20,4 @@ const Profile: FC<Props> = ({ width, height, imageUrl }) => {
   );
 };
 
-export default Profile;
+export default ProfileAvatar;

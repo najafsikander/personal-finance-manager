@@ -1,5 +1,5 @@
 import ProfileForm from "@/components/pages/Settings/Profile/ProfileForm";
-import Profile from "@/components/ui/avatar/profile";
+import ProfileAvatar from "@/components/ui/avatar/profile-avatar";
 import { createFileRoute } from "@tanstack/react-router";
 import { PencilLine } from "lucide-react";
 
@@ -13,7 +13,7 @@ function RouteComponent() {
   return (
     <>
       <section className="w-full flex flex-row gap-4 justify-start pl-2">
-        <Profile width="80" height="80" imageUrl={imageUrl} />
+        <ProfileAvatar width="80" height="80" imageUrl={imageUrl} />
         <div className="flex flex-col justify-center">
           <h1 className="text-xl font-medium text-black">Account Username</h1>
           <h3 className="font-medium text-slate-600">Account Owner</h3>
