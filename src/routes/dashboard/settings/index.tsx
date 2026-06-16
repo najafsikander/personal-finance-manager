@@ -17,6 +17,12 @@ function SettingsIndexPage() {
       path: "/dashboard/settings/profile/?readOnly=false",
     },
   ];
+  const securityPills = [
+    {
+      name: "Update Password",
+      path: "/dashboard/settings/security/",
+    },
+  ];
   return (
     <div className="w-full">
       <h2 className="text-2xl font-semibold mb-4 text-center">Settings</h2>
@@ -28,6 +34,7 @@ function SettingsIndexPage() {
       {/*Grid of cards for each settings category*/}
       <div className="w-full grid grid-cols-2 gap-5 mt-5 p-4">
         <CategoryOptionsCard title="Profile" pills={profilePills} />
+        <CategoryOptionsCard title="Security" pills={securityPills} />
       </div>
     </div>
   );
