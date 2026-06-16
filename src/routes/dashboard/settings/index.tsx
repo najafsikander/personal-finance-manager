@@ -8,8 +8,14 @@ export const Route = createFileRoute("/dashboard/settings/")({
 
 function SettingsIndexPage() {
   const profilePills = [
-    { name: "View Profile", path: "/dashboard/settings/profile/" },
-    { name: "Edit Profile", path: "/dashboard/settings/profile/" },
+    {
+      name: "View Profile",
+      path: "/dashboard/settings/profile/?readOnly=true",
+    },
+    {
+      name: "Edit Profile",
+      path: "/dashboard/settings/profile/?readOnly=false",
+    },
   ];
   return (
     <div className="w-full">

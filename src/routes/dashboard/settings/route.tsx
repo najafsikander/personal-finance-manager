@@ -28,6 +28,7 @@ function SettingsLayout() {
             <li>
               <Link
                 to="/dashboard/settings/profile"
+                search={{ readOnly: true }}
                 className="block p-2 rounded-md hover:bg-gray-200 transition"
                 activeProps={{ className: "block p-2 rounded-md bg-gray-300" }}
               >
