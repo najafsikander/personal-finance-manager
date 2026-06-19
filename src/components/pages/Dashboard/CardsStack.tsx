@@ -32,7 +32,7 @@ const CardsStack = () => {
   const cardHeight = 220;
   const cardOffset = 40;
 
-  const moveCardToFront = (cardId: number, index: number) => {
+  const moveCardToFront = (index: number) => {
     const updatedCards = [...cards];
     const [movedCard] = updatedCards.splice(index, 1);
     updatedCards.unshift(movedCard);
@@ -60,7 +60,7 @@ const CardsStack = () => {
               vendor={card.vendor}
               zIndex={cards.length - index}
               offsetY={index * cardOffset}
-              onClick={() => moveCardToFront(card.id, index)}
+              onClick={() => moveCardToFront(index)}
             />
           ))}
         </div>
