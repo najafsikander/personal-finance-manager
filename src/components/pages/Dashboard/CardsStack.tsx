@@ -32,15 +32,12 @@ const CardsStack = () => {
   const cardHeight = 220;
   const cardOffset = 40;
 
-  const moveCardToFront = (cardId: number) => {
-    const cardIndex = cards.findIndex((card) => card.id === cardId);
-    if (cardIndex > -1) {
-      const updatedCards = [...cards];
-      const [movedCard] = updatedCards.splice(cardIndex, 1);
-      updatedCards.unshift(movedCard);
-      // Update the state with the new order of cards
-      setCards(updatedCards); // Uncomment this line if you have a state to manage cards
-    }
+  const moveCardToFront = (cardId: number, index: number) => {
+    const updatedCards = [...cards];
+    const [movedCard] = updatedCards.splice(index, 1);
+    updatedCards.unshift(movedCard);
+    // Update the state with the new order of cards
+    setCards(updatedCards);
   };
 
   return (
@@ -63,7 +60,7 @@ const CardsStack = () => {
               vendor={card.vendor}
               zIndex={cards.length - index}
               offsetY={index * cardOffset}
-              onClick={() => moveCardToFront(card.id)}
+              onClick={() => moveCardToFront(card.id, index)}
             />
           ))}
         </div>
