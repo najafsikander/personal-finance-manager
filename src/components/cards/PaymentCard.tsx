@@ -10,6 +10,7 @@ type Props = {
   vendor: string;
   zIndex: number;
   offsetY: number;
+  onClick?: () => void; // Optional onClick handler
 };
 
 const PaymentCard: FC<Props> = ({
@@ -20,6 +21,7 @@ const PaymentCard: FC<Props> = ({
   vendor,
   zIndex,
   offsetY,
+  onClick,
 }) => {
   return (
     <div
@@ -28,6 +30,7 @@ const PaymentCard: FC<Props> = ({
         zIndex: zIndex,
         top: `${offsetY}px`,
       }}
+      onClick={onClick}
     >
       {/* Card's Wifi Icon */}
       <div className="w-full flex justify-end">

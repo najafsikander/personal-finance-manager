@@ -1,7 +1,8 @@
 import PaymentCard from "@/components/cards/PaymentCard";
+import { useState } from "react";
 
 const CardsStack = () => {
-  const cards = [
+  const [cards, setCards] = useState([
     {
       color: "bg-purple-600",
       name: "Ethan Cole",
@@ -26,10 +27,21 @@ const CardsStack = () => {
       vendor: "AMEX",
       id: 3,
     },
-  ];
+  ]);
 
   const cardHeight = 220;
   const cardOffset = 40;
+
+  const moveCardToFront = (cardId: number) => {
+    const cardIndex = cards.findIndex((card) => card.id === cardId);
+    if (cardIndex > -1) {
+      const updatedCards = [...cards];
+      const [movedCard] = updatedCards.splice(cardIndex, 1);
+      updatedCards.unshift(movedCard);
+      // Update the state with the new order of cards
+      setCards(updatedCards); // Uncomment this line if you have a state to manage cards
+    }
+  };
 
   return (
     <div>
@@ -51,6 +63,7 @@ const CardsStack = () => {
               vendor={card.vendor}
               zIndex={cards.length - index}
               offsetY={index * cardOffset}
+              onClick={() => moveCardToFront(card.id)}
             />
           ))}
         </div>
