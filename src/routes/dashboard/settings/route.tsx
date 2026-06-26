@@ -5,7 +5,7 @@ import {
   Outlet,
   useNavigate,
 } from "@tanstack/react-router";
-import { Bell, CircleUser, Shield } from "lucide-react";
+import { Bell, CircleUser, Shield, CreditCard } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard/settings")({
   component: SettingsLayout,
@@ -61,6 +61,19 @@ function SettingsLayout() {
                 <div className="flex gap-2 items-center">
                   <Bell size={25} />
                   Notification
+                </div>
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="/dashboard/settings/manage-cards"
+                className="block p-2 rounded-md hover:bg-gray-200 transition"
+                activeProps={{ className: "block p-2 rounded-md bg-gray-300" }}
+              >
+                <div className="flex gap-2 items-center">
+                  <CreditCard size={25} />
+                  Manage Cards
                 </div>
               </Link>
             </li>

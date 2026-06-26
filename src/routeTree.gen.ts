@@ -26,6 +26,7 @@ import { Route as DemoStartSsrIndexRouteImport } from './routes/demo/start.ssr.i
 import { Route as DashboardSettingsSecurityIndexRouteImport } from './routes/dashboard/settings/security/index'
 import { Route as DashboardSettingsProfileIndexRouteImport } from './routes/dashboard/settings/profile/index'
 import { Route as DashboardSettingsNotificationsIndexRouteImport } from './routes/dashboard/settings/notifications/index'
+import { Route as DashboardSettingsManageCardsIndexRouteImport } from './routes/dashboard/settings/manage-cards/index'
 import { Route as DashboardExpendituresViewIndexRouteImport } from './routes/dashboard/expenditures/view/index'
 import { Route as DashboardExpendituresBulkUploadIndexRouteImport } from './routes/dashboard/expenditures/bulk-upload/index'
 import { Route as DashboardExpendituresAddIndexRouteImport } from './routes/dashboard/expenditures/add/index'
@@ -121,6 +122,12 @@ const DashboardSettingsNotificationsIndexRoute =
     path: '/notifications/',
     getParentRoute: () => DashboardSettingsRouteRoute,
   } as any)
+const DashboardSettingsManageCardsIndexRoute =
+  DashboardSettingsManageCardsIndexRouteImport.update({
+    id: '/manage-cards/',
+    path: '/manage-cards/',
+    getParentRoute: () => DashboardSettingsRouteRoute,
+  } as any)
 const DashboardExpendituresViewIndexRoute =
   DashboardExpendituresViewIndexRouteImport.update({
     id: '/expenditures/view/',
@@ -175,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/expenditures/add': typeof DashboardExpendituresAddIndexRoute
   '/dashboard/expenditures/bulk-upload': typeof DashboardExpendituresBulkUploadIndexRoute
   '/dashboard/expenditures/view': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/manage-cards': typeof DashboardSettingsManageCardsIndexRoute
   '/dashboard/settings/notifications': typeof DashboardSettingsNotificationsIndexRoute
   '/dashboard/settings/profile': typeof DashboardSettingsProfileIndexRoute
   '/dashboard/settings/security': typeof DashboardSettingsSecurityIndexRoute
@@ -198,6 +206,7 @@ export interface FileRoutesByTo {
   '/dashboard/expenditures/add': typeof DashboardExpendituresAddIndexRoute
   '/dashboard/expenditures/bulk-upload': typeof DashboardExpendituresBulkUploadIndexRoute
   '/dashboard/expenditures/view': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/manage-cards': typeof DashboardSettingsManageCardsIndexRoute
   '/dashboard/settings/notifications': typeof DashboardSettingsNotificationsIndexRoute
   '/dashboard/settings/profile': typeof DashboardSettingsProfileIndexRoute
   '/dashboard/settings/security': typeof DashboardSettingsSecurityIndexRoute
@@ -224,6 +233,7 @@ export interface FileRoutesById {
   '/dashboard/expenditures/add/': typeof DashboardExpendituresAddIndexRoute
   '/dashboard/expenditures/bulk-upload/': typeof DashboardExpendituresBulkUploadIndexRoute
   '/dashboard/expenditures/view/': typeof DashboardExpendituresViewIndexRoute
+  '/dashboard/settings/manage-cards/': typeof DashboardSettingsManageCardsIndexRoute
   '/dashboard/settings/notifications/': typeof DashboardSettingsNotificationsIndexRoute
   '/dashboard/settings/profile/': typeof DashboardSettingsProfileIndexRoute
   '/dashboard/settings/security/': typeof DashboardSettingsSecurityIndexRoute
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/dashboard/expenditures/add'
     | '/dashboard/expenditures/bulk-upload'
     | '/dashboard/expenditures/view'
+    | '/dashboard/settings/manage-cards'
     | '/dashboard/settings/notifications'
     | '/dashboard/settings/profile'
     | '/dashboard/settings/security'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/dashboard/expenditures/add'
     | '/dashboard/expenditures/bulk-upload'
     | '/dashboard/expenditures/view'
+    | '/dashboard/settings/manage-cards'
     | '/dashboard/settings/notifications'
     | '/dashboard/settings/profile'
     | '/dashboard/settings/security'
@@ -299,6 +311,7 @@ export interface FileRouteTypes {
     | '/dashboard/expenditures/add/'
     | '/dashboard/expenditures/bulk-upload/'
     | '/dashboard/expenditures/view/'
+    | '/dashboard/settings/manage-cards/'
     | '/dashboard/settings/notifications/'
     | '/dashboard/settings/profile/'
     | '/dashboard/settings/security/'
@@ -440,6 +453,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardSettingsNotificationsIndexRouteImport
       parentRoute: typeof DashboardSettingsRouteRoute
     }
+    '/dashboard/settings/manage-cards/': {
+      id: '/dashboard/settings/manage-cards/'
+      path: '/manage-cards'
+      fullPath: '/dashboard/settings/manage-cards'
+      preLoaderRoute: typeof DashboardSettingsManageCardsIndexRouteImport
+      parentRoute: typeof DashboardSettingsRouteRoute
+    }
     '/dashboard/expenditures/view/': {
       id: '/dashboard/expenditures/view/'
       path: '/expenditures/view'
@@ -503,6 +523,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 
 interface DashboardSettingsRouteRouteChildren {
   DashboardSettingsIndexRoute: typeof DashboardSettingsIndexRoute
+  DashboardSettingsManageCardsIndexRoute: typeof DashboardSettingsManageCardsIndexRoute
   DashboardSettingsNotificationsIndexRoute: typeof DashboardSettingsNotificationsIndexRoute
   DashboardSettingsProfileIndexRoute: typeof DashboardSettingsProfileIndexRoute
   DashboardSettingsSecurityIndexRoute: typeof DashboardSettingsSecurityIndexRoute
@@ -511,6 +532,8 @@ interface DashboardSettingsRouteRouteChildren {
 const DashboardSettingsRouteRouteChildren: DashboardSettingsRouteRouteChildren =
   {
     DashboardSettingsIndexRoute: DashboardSettingsIndexRoute,
+    DashboardSettingsManageCardsIndexRoute:
+      DashboardSettingsManageCardsIndexRoute,
     DashboardSettingsNotificationsIndexRoute:
       DashboardSettingsNotificationsIndexRoute,
     DashboardSettingsProfileIndexRoute: DashboardSettingsProfileIndexRoute,
